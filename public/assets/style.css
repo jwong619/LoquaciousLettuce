@@ -58,7 +58,7 @@ body {
 }
 
 #modals {
-  opacity: .8;
+/*  opacity: .8;*/
 }
 
 #scoresList {
@@ -119,37 +119,75 @@ body {
 }
 
 .playerChoiceBtn:hover, .levelChoiceBtn:hover {
-  color: #4d94ff;
+  background-color: #4d94ff;
 }
 
-/*.well {
-  background-color:'#1a1a1a';
-  max-width: 400px;
-
+#profileImage {
+  width: 320px;
+  height: 320px;
 }
-*/
-/*#lvlSettingsBox {
-  background:'blue';
-  height: 300;
-}*/
 
+#profileStats {
+  height: 412px;
+}
 
+#stats1 {
+/*  background-color: lightgrey;
+  border-radius: 4px;*/
+}
 
+.levels {
+  /*background-color: lightgrey;*/
+  border-radius: 4px;
+  height: 40px;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-left: 15px;
+}
 
+.scores:hover {
+  background-color: #b3b3b3;
+}
 
+#profileLevelScores {
+  text-align: left;
+}
 
+#profileTopScores {
+  text-align: right;
+}
 
+.scores {
+  text-align: right;
+  background-color: lightgrey;
+  border-radius: 4px;
+  height: 40px;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-right: 15px;
+}
 
+.modal-body {
+  height: 200px;
+  overflow-y: auto;
+  background-color: lightgrey;
+}
 
+#modPic {
+/*  background-color: green;*/
+  height: 160px;
+}
 
+#lvl {
+  padding-top: 25px;
+/*  background-color: blue;*/
+  height: 160px;
+}
 
-
-
-
-
-
-
-
+#scr {
+/*  background-color: red;*/
+  height: 160px;
+}
 
 
 

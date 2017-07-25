@@ -11,7 +11,7 @@ router.route('/')
 router.route('/login')
   .get((req, res) => {
     res.render('login.ejs', { message: req.flash('loginMessage') });
-  }) // render login from home.jsx
+  })
   .post(middleware.passport.authenticate('local-login', {
     successRedirect: '/profile',
     failureRedirect: '/login',
