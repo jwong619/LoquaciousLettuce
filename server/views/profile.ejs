@@ -15,7 +15,9 @@
                 <img id="profileImage" src="http://cutecatsinhats.com/wp-content/uploads/2016/01/lil-bub-party-hat.jpg"/>
                 <% if (user.email) { %>
                 <p>
-                    <strong>username</strong>: <%= user.username %><br>
+                    <strong>username</strong>: <%= user.display %><br>
+
+
                     <!-- <strong>id</strong>: <%= user.id %><br> -->
                     <strong>email</strong>: <%= user.email %>
                 </p>
@@ -32,28 +34,45 @@
 
         <div class="col-sm-8">
           <div id="profileStats" class="well">
-            <strong>JULIA</strong><br></br>
-            RANKING: &#9672 &#9672 &#9672 &#9672 &#9672 RockStar
-            STATS <br></br>
-
+            <div id="profileDisplayName"> <%= user.display %>
+              <span id="profileRank">RANK:  </span>
+              <span id="profileRankMarkers">Rockstar &#9672 &#9672 &#9672 &#9672 &#9672</span></div>
+              <span id="profLevelScore">level
+                <span id="profTopScore">top score</span>
+              </span>
 
             <div id="stats1">
-                difficulty<div>top score</div>
 
-                 <div id="profileLevelScores" class="col-sm-6">
-                  <div class="levels">Super Beginner: &#9733 &#9733 &#9733 &#9733 &#9733 &#9733 </div>
-                  <div class="levels">Beginner: &#9733 &#9733 &#9733 </div>
-                  <div class="levels">Intermediate: &#9733 </div>
-                  <div class="levels">Advanced: &#9733 &#9733 &#9733</div>
-                  <div class="levels">Rockstar: &#9733 &#9733 &#9733 &#9733 &#9733 &#9733 </div>
+
+                 <div id="profileLevelScores" >
+                  <div class="levels">
+                    Super Beginner: &#9733 &#9733 &#9733 &#9733 &#9733 &#9733
+                    <span class="profileScores">312323</span>
+                  </div>
+                  <div class="levels">
+                    Beginner: &#9733 &#9733 &#9733
+                    <span class="profileScores"> 212 </span>
+                  </div>
+                  <div class="levels">
+                    Intermediate: &#9733
+                    <span class="profileScores"> 766745 </span>
+                  </div>
+                  <div class="levels">
+                    Advanced: &#9733 &#9733 &#9733
+                    <span class="profileScores"> 99900 </span>
+                  </div>
+                  <div class="levels">
+                    Rockstar: &#9733 &#9733 &#9733 &#9733 &#9733 &#9733
+                    <span class="profileScores"> 240000000 </span>
+                  </div>
                  </div>
 
 
-                <div class="scores"> 233 </div>
+<!--                 <div class="scores"> 233 </div>
                 <div class="scores"> 10000 </div>
                 <div class="scores"> 443222 </div>
                 <div class="scores"> 32323 </div>
-                <div class="scores">4200000000</div>
+                <div class="scores">4200000000</div> -->
             </div>
 
           </div>

@@ -34,8 +34,23 @@ app.get('/tokenhere', (req, res) => {
   });
 });
 
+// // need to add post handle route to get displayname into profiles table
+// // lets try it here
+
+// app.post('/signup', (req, res) => {
+//   models.Profile.where({'email': req.email})
+//   .
+// })
+
+
 app.use('/', routes.auth);
 app.use('/api', routes.api);
 app.use('/api/profiles', routes.profiles);
+
+
+
+
+
+
 
 module.exports = app;
