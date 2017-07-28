@@ -37,7 +37,7 @@ export const getTracks = (url, options) => (dispatch, getState) => {
           axios('https://api.spotify.com/v1/audio-features/' + storage[i].id, options)
             .then((data) => {
               return data.data;
-            })  
+            })
         );
       }
       Promise.all(data.data.BPMItems)
@@ -129,6 +129,99 @@ export const closeModal = (obj) => {
     payload: obj
   };
 };
+
+// export const totalSingleScore = (score) => {
+//   console.log("score---", score);
+//   return {
+//     type: 'UPDATE_TOTAL_SCORE',
+//     payload: view
+//   };
+// };
+
+
+/**************CHANGE USERS LIST (TOP TEN)***************/
+
+
+//need to make a current song reducer;???
+
+export const getTopTenScores = (profileID, game) => {
+  console.log('current game---', game);
+  // console.log('from game song--', game.song);
+  // console.log('from game difficulty--', game.difficulty);
+  // console.log('from game score--', game.score);
+  // song and difficulty and score
+  axios.put('/api/games/1')
+  .then((result)=> {
+    console.log('song result--', result.data);
+    //console.log(result.data)
+  })
+  .catch((error) => {
+    console.error('failed test--', error);
+  });
+};
+
+
+
+
+
+// SHOULD JUST INSERT THE GAME
+// export const addNewGame = (game) => {
+//   // obj {song, level}
+//   //axios post requestttttt!!!!!!!!!***********
+//   console.log('selected song---', game.song);
+//   console.log('selected level---', game.difficulty);
+//   return {
+//     type: 'NEW_GAME', /// no no no
+//     payload: game
+//   };
+// };
+// export const addNewGame
+
+
+// needs to query db
+export const changeUsersList = () => (dispatch, getState) => {
+  axios.get('/score')
+  .then((result) => { // want to get array back
+    console.log('-----result data-----', result.data);
+    return dispatch(updateUsersScores(result.data));
+  })
+  .catch((error) => {
+    console.error('Failed to get top ten scores and users', error);
+  });
+};
+
+// also need a function to add score into db first before the above
+//server needs to query
+
+// export const updateTopScore = () => (dispatch, getState) => {
+//   axios.post('/')
+//   .then
+// }
+
+//////////////**************************/////////////////
+// export const getCurrentUser = () => (dispatch, getState) => {
+//   axios.get(`user/info`)
+//   .then((result) => {
+
+//   })
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

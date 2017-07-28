@@ -35,12 +35,13 @@ module.exports.create = (req, res) => {  // [ C ]
 };
 
 module.exports.getOne = (req, res) => {  // [ R ]
-  models.Song.where({ id: req.body.id }).fetch() // 'body' = SOME NODE THING WHICH WILL AUTO-BE THERE
+  console.log('---', req.params.id);
+  models.Song.where({ id: req.params.id }).fetch() // 'body' = SOME NODE THING WHICH WILL AUTO-BE THERE
     .then(song => {
       if (!song) {
         throw song;
       }
-      res.status(200).send(song);
+      res.status(201).send(song);
     })
     .error(err => {
       res.status(500).send(err);

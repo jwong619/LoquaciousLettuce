@@ -55,7 +55,6 @@ body {
   text-align: center;
   font-family: arial;
   text-transform: uppercase;
-<<<<<<< HEAD
 }
 
 #modals {
@@ -102,7 +101,7 @@ body {
 
 .loginBtn, .signUpBtn {
   border-radius: 96px !important;
-  width: 22vw !important;
+  width: 100% !important;
   background-color: #4d94ff;
 }
 
@@ -132,10 +131,6 @@ body {
   height: 412px;
 }
 
-#stats1 {
-/*  background-color: lightgrey;
-  border-radius: 4px;*/
-}
 
 .levels {
   /*background-color: lightgrey;*/
@@ -147,6 +142,57 @@ body {
 }
 
 .scores:hover {
+  background-color: #b3b3b3;
+}
+
+#profileLevelScores {
+  text-align: left;
+}
+
+#profileTopScores {
+  text-align: right;
+}
+
+.scores {
+  text-align: right;
+  background-color: lightgrey;
+  border-radius: 4px;
+  height: 40px;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-right: 15px;
+}
+
+.modal-body {
+  height: 200px;
+  overflow-y: auto;
+  background-color: lightgrey;
+}
+
+#modPic {
+  height: 160px;
+}
+
+#lvl {
+  padding-top: 25px;
+  height: 160px;
+}
+
+#scr {
+
+  height: 160px;
+}
+
+.levels {
+  background-color: lightgrey;
+  border-radius: 4px;
+  height: 40px;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+
+.levels:hover {
   background-color: #b3b3b3;
 }
 
@@ -189,105 +235,48 @@ body {
 /*  background-color: red;*/
   height: 160px;
 }
-=======
-}
 
-#modals {
-  opacity: .8;
-}
-
-#scoresList {
-  background-color: lightgrey;
-}
-
-#items {
-  border-radius: 5px;
-  border-style: solid;
-  font-size: 25px;
+#profileDisplayName {
+  font-size: 40px;
   font-weight: 900;
-  font-family: 'arial';
-  color: black;
-  background-color: lightgrey;
-  height: 52px;
+  margin-bottom: 25px;
 }
 
-#items:hover {
-  color: #0040ff;
+#profTopScore {
+  margin-left: 570px;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
-#score {
-  text-align: right;
-  margin-right: 25px;
-  font-size: 25px;
+#profLevelScore {
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
-#userImage {
-  margin-right: 25px;
-}
-
-.loginText, .signUpText {
-  margin-left: 109px;
-  color: lightgrey;
-}
-
-.loginFooter {
-  color: lightgrey;
-}
-
-.loginBtn, .signUpBtn {
-  border-radius: 96px !important;
-  width: 22vw !important;
-  background-color: #4d94ff;
-}
-
-.loginBtn:hover, .signUpBtn:hover{
-  background-color: #00cc66;
-}
-
-.playerMode {
-  margin-top: 150px;
-}
-
-.playerChoiceBtn, .levelChoiceBtn {
+#profileRank {
   font-size: 20px;
-  border-style: solid;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 5px;
 }
 
-.playerChoiceBtn:hover, .levelChoiceBtn:hover {
-  color: #4d94ff;
+#profileRankMarkers {
+  font-size: 20px;
+  color: blue;
 }
 
-/*.well {
-  background-color:'#1a1a1a';
-  max-width: 400px;
-
+.profileScores {
+  float: right;
+  margin-right: 18px;
 }
-*/
-/*#lvlSettingsBox {
-  background:'blue';
-  height: 300;
-}*/
 
+#profileBtns {
+  margin-left: 25%;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 9ab050bc9825022919f9e8622473c07969cc1e45
-
-
+#imageHolder {
+  height: 410px;
+}
 
 
 

@@ -14,6 +14,7 @@ app.use(middleware.bodyParser.json());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
 //var sessionStart = middleware.auth.session;
 // console.log('SESSSIION DOT STOREEEEE ', sessionStart.store);
 // sessionStart.store.auth('1f5bf94b621a2a7ca2be18a02309d78e', function() {
@@ -34,20 +35,24 @@ app.get('/tokenhere', (req, res) => {
   });
 });
 
-// // need to add post handle route to get displayname into profiles table
-// // lets try it here
+// app.get('/signup', (req, res) => {
+//   console.log('and do this too');
+//   // res.send('It works!!!!!');
+// });
 
-// app.post('/signup', (req, res) => {
-//   models.Profile.where({'email': req.email})
-//   .
+// app.get('api/songs/1', (req,res)=> {
+//   res.status(200).send('hi');
 // })
 
 app.use('/', routes.auth);
-app.use('/', routes.test);
+// app.use('/', routes.test);
 app.use('/api', routes.api);
 app.use('/api/profiles', routes.profiles);
 app.use('/api/songs', routes.songs);
 app.use('/api/games', routes.games);
 app.use('/api/highscores', routes.highscores);
+
+// has to be at the end of this file
+app.use(middleware.auth.verify, (req, res) => { res.render('index'); });
 
 module.exports = app;

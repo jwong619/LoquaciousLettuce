@@ -8,6 +8,7 @@
  import {connect} from 'react-redux';
  import {bindActionCreators} from 'redux';
  import {changeSong, getGame} from '../actions/index';
+ import {getTopTenScores} from '../actions/index';
 
  class Game extends React.Component {
    constructor(props) {
@@ -236,6 +237,13 @@
           allRows.checkDelete();
           allRows.flashDots();
         } else {
+
+
+          // invoke function that stores score into db if song ends
+
+
+
+
           ctx.clearRect(-50, -50, 1500, 1500);
           ctx.fillStyle = 'black';
           ctx.fillRect(5, 5, 400, 600);
@@ -251,14 +259,31 @@
        setTimeout(function() {
         audio.play();
       }, (475 / (4 * (1000 / 30))) * 1000);
-       setInterval(()=> {
+
+
+       var frameCheck = setInterval(()=> {
         draw();
         if (context.state.health <= 0) {
           audio.pause();
+          console.log(context.state);
+          getTopTenScores(context.state);
           context.setState({end: true});
+          clearInterval(frameCheck);
+          draw();
         }
       }, 1000 / 30);
 
+
+       /*
+
+      var refreshId = setInterval(function() {
+      var properID = CheckReload();
+      if (properID > 0) {
+          clearInterval(refreshId);
+        }
+      }, 10000);
+
+       */
 
        var modifier = 1;
        if (context.state.difficulty === 'super_beginner') {
@@ -418,12 +443,13 @@
 }
  var mapStateToProps = (state) => {
    return {
-     game: state.game
+     game: state.game,
+     getTopTenScores: state.getTopTenScores
    };
  };
 
  var matchDispatchToProps = (dispatch) => {
-   return bindActionCreators({getGame: getGame, changeSong: changeSong}, dispatch);
+   return bindActionCreators({getGame: getGame, changeSong: changeSong, getTopTenScores: getTopTenScores}, dispatch);
  };
 
  export default connect(mapStateToProps, matchDispatchToProps)(Game);

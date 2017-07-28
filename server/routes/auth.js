@@ -78,6 +78,6 @@ router.get('/auth/spotify/callback', middleware.passport.authenticate('spotify',
 //   failureRedirect: '/login'
 // }));
 
-router.use(middleware.auth.verify, (req, res) => { res.render('index'); });
+
 
 module.exports = router;
