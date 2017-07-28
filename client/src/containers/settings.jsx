@@ -7,8 +7,11 @@ import SelectPlayerSettings from './selectPlayerSettings.jsx';
 import SelectLevelSettings from './selectLevelSettings.jsx';
 import MusicSettings from './musicSettings.jsx';
 import {Button, ButtonGroup} from 'react-bootstrap';
+import {getCurrentUser} from '../actions/index';
+import {getActiveProfile} from '../actions/index';
 
 class Settings extends React.Component {
+
   render() {
     console.log('THIS IS VIEW', this.props.view);
     return (
@@ -50,7 +53,11 @@ class Settings extends React.Component {
 var mapStateToProps = (state) => {
   return {
     view: state.view
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps)(Settings);
+var mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({getCurrentUser: getCurrentUser}, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Settings);

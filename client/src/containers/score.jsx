@@ -16,7 +16,7 @@ class Score extends React.Component {
         <Button><Link to='/'>PLAY AGAIN!</Link></Button>
         <a id="logoutBtn" href="/logout" className="btn btn-default btn-sm">Logout</a>
         <br></br>
-          <ScoreList key={this.props.users.id}/>
+          <ScoreList key={this.props.topTenScoresUsers.id}/>
       </div>
     );
   }
@@ -24,7 +24,7 @@ class Score extends React.Component {
 
 var mapStateToProps = (state) => {
   return {
-    users: state.users
+    topTenScoresUsers: state.topTenScoresUsers
   };
 };
 

@@ -1,5 +1,6 @@
 module.exports.api = require('./api');
 module.exports.auth = require('./auth');
+//module.exports.users = require('./users');
 module.exports.profiles = require('./profiles');
 module.exports.songs = require('./songs');
 module.exports.games = require('./games');

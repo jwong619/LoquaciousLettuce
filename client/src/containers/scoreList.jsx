@@ -12,7 +12,7 @@ class ScoreList extends React.Component {
 
   createScoreListEntries() {
 
-    var sorted = this.props.users.sort( (a, b) => {
+    var sorted = this.props.topTenScoresUsers.sort( (a, b) => {
       return b.score - a.score;
     });
     // this.props.selectUser(user) line 25
@@ -81,7 +81,7 @@ class ScoreList extends React.Component {
 
 var mapStateToProps = (state) => {
   return {
-    users: state.users,
+    topTenScoresUsers: state.topTenScoresUsers,
     showScoreModal: state.showScoreModal,
     //getTopTenScores: state.getTopTenScores
   };

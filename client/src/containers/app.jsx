@@ -1,20 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Example from '../containers/test.jsx';
-import Home from '../containers/home.jsx';
-import Settings from '../containers/settings.jsx';
-import MusicSettings from '../containers/musicSettings.jsx';
-import Game from '../containers/game.jsx';
-import MultiPlayer from '../containers/multiPlayer.jsx';
-import Score from '../containers/score.jsx';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import Settings from './settings.jsx';
+import MusicSettings from './musicSettings.jsx';
+import Game from './game.jsx';
+import MultiPlayer from './multiPlayer.jsx';
+import Score from './score.jsx';
 import {Link, IndexRoute, browserHistory, DefaultRoute} from 'react-router';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
+import {getCurrentUser} from '../actions/index';
+
 
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
+  // }
+
+  componentDidMount () {
+    this.props.getCurrentUser();
   }
 
   render() {
@@ -29,10 +35,19 @@ class App extends React.Component {
             <Route path='/score' component={Score} />
           </div>
         </Router>
-        <Example/>
       </div>
     );
   }
 }
 
-export default App;
+var mapStateToProps = (state) => {
+  return {
+    view: state.currentUser
+  };
+};
+
+var mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({getCurrentUser: getCurrentUser}, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

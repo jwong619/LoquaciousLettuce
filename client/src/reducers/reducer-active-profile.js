@@ -1,6 +1,6 @@
-export default (state = 'preSignUp' , action) => {
+export default (state = 'null' , action) => {
   switch (action.type) {
-    case 'CHANGE_HOME_VIEW' : {
+    case 'SET_ACTIVE_PROFILE' : {
       state = action.payload;
       break;
     }
