@@ -153,9 +153,9 @@ export const selectMode = (playerMode) => {
 export const saveGame = (profileID, game) => {
   console.log('current game---', game);
   console.log('current profile---', profileID);
-  axios.post('/')
+  axios.post('/api/games')
   .then( (result) => {
-    console.log('result', result);
+    console.log('result for save game', result);
   })
   .catch( (error) => {
     console.error('failed to save game');
@@ -180,10 +180,6 @@ export const saveGame = (profileID, game) => {
 export const getTopTenScores = (profileID, game) => {
   console.log('current game---', game);
   console.log('current profile---', profileID);
-  // console.log('from game song--', game.song);
-  // console.log('from game difficulty--', game.difficulty);
-  // console.log('from game score--', game.score);
-  // song and difficulty and score
   axios.put('/api/games/1')
   .then( (result)=> {
     console.log('song result--', result.data);
@@ -196,20 +192,6 @@ export const getTopTenScores = (profileID, game) => {
 
 
 
-
-
-// SHOULD JUST INSERT THE GAME
-// export const addNewGame = (game) => {
-//   // obj {song, level}
-//   //axios post requestttttt!!!!!!!!!***********
-//   console.log('selected song---', game.song);
-//   console.log('selected level---', game.difficulty);
-//   return {
-//     type: 'NEW_GAME', /// no no no
-//     payload: game
-//   };
-// };
-// export const addNewGame
 
 
 // needs to query db

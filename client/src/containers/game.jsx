@@ -8,7 +8,7 @@
  import {connect} from 'react-redux';
  import {bindActionCreators} from 'redux';
  import {changeSong, getGame} from '../actions/index';
- import {getTopTenScores} from '../actions/index';
+ import {getTopTenScores, saveGame} from '../actions/index';
 
  class Game extends React.Component {
    constructor(props) {
@@ -265,8 +265,10 @@
         draw();
         if (context.state.health <= 0) {
           audio.pause();
-          console.log(context.state);
-          getTopTenScores(context.state);
+          //console.log(context.state);
+          console.log('----> current user',this.props.currentUser);
+          saveGame(this.props.currentUser.id, context.state);
+          //getTopTenScores(context.state);
           context.setState({end: true});
           clearInterval(frameCheck);
           draw();
@@ -444,12 +446,13 @@
  var mapStateToProps = (state) => {
    return {
      game: state.game,
-     getTopTenScores: state.getTopTenScores
+     getTopTenScores: state.getTopTenScores,
+     currentUser: state.currentUser
    };
  };
 
  var matchDispatchToProps = (dispatch) => {
-   return bindActionCreators({getGame: getGame, changeSong: changeSong, getTopTenScores: getTopTenScores}, dispatch);
+   return bindActionCreators({getGame: getGame, changeSong: changeSong, getTopTenScores: getTopTenScores, saveGame: saveGame}, dispatch);
  };
 
  export default connect(mapStateToProps, matchDispatchToProps)(Game);
