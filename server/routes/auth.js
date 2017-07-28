@@ -73,7 +73,7 @@ router.get('/auth/spotify/callback', middleware.passport.authenticate('spotify',
 
 router.route('/userInfo')
 .get((req, res) => {
-  console.log('req---', req.user);
+  //console.log('req---', req.user);
   res.send(200, req.user);
 });
 

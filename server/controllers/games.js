@@ -14,19 +14,22 @@ module.exports.getAll = (req, res) => {  // [ R ]
 };
 
 module.exports.create = (req, res) => {  // [ C ]
-  models.Game.forge({
-    profile_id: req.body.profile_id,
-    song_id: req.body.song_id,
-    score: req.body.score,
-    difficultylevel: req.body.difficultylevel,
-  })
-    .save()
-    .then(result => {
-      res.status(201).send(result);
-    })
-    .catch(err => {
-      res.status(500).send(err);
-    });
+  console.log('--->about to save game');
+  console.log('profileID----------------', req.user.id);
+  res.send(201, 'saveddddddd???')
+  // models.Game.forge({
+  //   profile_id: req.body.profile_id,
+  //   song_id: req.body.song_id,
+  //   score: req.body.score,
+  //   difficultylevel: req.body.difficultylevel,
+  // })
+  //   .save()
+  //   .then(result => {
+  //     res.status(201).send('was saved maybe');
+  //   })
+  //   .catch(err => {
+  //     res.status(500).send(err);
+  //   });
 };
 
 module.exports.getAllForUser = (req, res) => {  // [ R ]
