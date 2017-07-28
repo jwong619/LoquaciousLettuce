@@ -1,7 +1,13 @@
 {
   "knex": {
+    "client": "postgresql",
     "connection": {
-      "database": "thesis_devel"
+      "database": "dbq90t7t9s1don",
+      "user": "laqfaxpzpylahy",
+      "password": "a8b8f1fd289c5dcc8a012a352721a38283218c77122f5ca640728c3e28844a8e", // IF THIS IS 'chon', SORRY. THAT IS FOR MY MACHINE ONLY AND I APPARENTLY FORGOT TO CHANGE IT BACK BEFORE PUSHING. IT WAS 'postgres' IN THE STARTER REPO, AND 'password' WHEN I GOT Y'ALL'S CHANGES ON 07/19.
+      "host": "ec2-23-23-225-12.compute-1.amazonaws.com",
+      "port": 5432,
+      "charset" : "utf8"
     }
   },
   "passport": {

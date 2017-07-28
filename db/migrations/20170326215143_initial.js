@@ -6,6 +6,7 @@ exports.up = function (knex, Promise) {
       table.string('first', 100).nullable();
       table.string('last', 100).nullable();
       table.string('display', 100).nullable();
+      table.string('username', 100).nullable();
       table.string('email', 100).nullable().unique();
       table.string('phone', 100).nullable();
       table.string('accessToken', 200).nullable();

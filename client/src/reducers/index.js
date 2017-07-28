@@ -10,6 +10,8 @@ import LibraryReducer from './reducer-library';
 import CurrentUserReducer from './reducer-current-user';
 import ActiveProfileReducer from './reducer-active-profile';
 // import totalScoreSingleReducer from './reducer-total-score-single';
+import YoutubeReducer from './reducer-youtube';
+
 
 //combined reducers comines all the files inside the reduce file and allReducer becomes the storage
 const allReducers = combineReducers({
@@ -22,7 +24,8 @@ const allReducers = combineReducers({
   music: MusicReducer,
   library: LibraryReducer,
   currentUser: CurrentUserReducer,
-  activeProfileReducer: ActiveProfileReducer
+  activeProfileReducer: ActiveProfileReducer,
+  youtube: YoutubeReducer
 });
 
 export default allReducers;

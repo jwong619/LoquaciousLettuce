@@ -179,7 +179,6 @@ body {
 }
 
 #scr {
-
   height: 160px;
 }
 
@@ -268,6 +267,9 @@ body {
 .profileScores {
   float: right;
   margin-right: 18px;
+}
+/*  background-color: red;*/
+  height: 160px;
 }
 
 #profileBtns {

@@ -28,7 +28,7 @@ app.use(middleware.flash());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/tokenhere', (req, res) => {
-  models.Profile.where({'first': 'Kevin'})
+  models.Profile.where({'email': 'kevinbondliu@gmail.com'})
   .fetch()
   .then(function(model) {
     res.send(model);

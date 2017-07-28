@@ -83,6 +83,7 @@ export const addLibrary = (object) => {
 export const getTracks = (url, options) => (dispatch, getState) => {
   axios.get(url, options)
     .then((data) => {
+      console.log('THIS IS THE DATA', data);
       var storage = data.data.tracks.items;
       var count = 0;
       var SpotifyIDstorage = [];
@@ -105,6 +106,28 @@ export const getTracks = (url, options) => (dispatch, getState) => {
         });
     })
     .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const setYoutube = (object) => {
+  console.log('setting youtube', object);
+  return {
+    type: 'ADD_YOUTUBE',
+    payload: object
+  };
+};
+
+export const getYoutube = (options) => (dispatch, getState) => {
+  axios.get('https://www.googleapis.com/youtube/v3/search', options)
+    .then(result => {
+      console.log('hello', result);
+      // www.youtubeinmp3.com/fetch/?video=
+      // var youtubeLinker = "https://www.youtube.com/watch?v=" + result.data.items[0].id.videoId;
+      var youtubeLink = '//www.youtubeinmp3.com/widget/button/?video=https://www.youtube.com/watch?v=' + result.data.items[0].id.videoId;
+      return dispatch(setYoutube(youtubeLink));
+    })
+    .catch(error => {
       console.log(error);
     });
 };

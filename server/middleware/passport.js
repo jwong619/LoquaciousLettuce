@@ -162,12 +162,11 @@ const getOrCreateOAuthProfile = (type, oauthProfile, done, accessToken, refreshT
     })
     .then(profile => {
       let profileInfo;
+      console.log(oauthProfile);
       console.log('this is the type', typeof(accessToken), typeof(refreshToken));
       if (type === 'spotify') {
         profileInfo = {
-          first: oauthProfile.displayName.split(' ')[0] || 'no',
-          last: oauthProfile.displayName.split(' ')[1] || 'name',
-          display: oauthProfile.displayName || 'no name',
+          username: oauthProfile.emails[0].value,
           email: oauthProfile.emails[0].value,
           accessToken: accessToken,
           refreshToken: refreshToken
