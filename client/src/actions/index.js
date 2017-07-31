@@ -252,10 +252,10 @@ export const saveGame = (profileId, game) => {
         // then get users
           //return axios.get()
         //changeTopTenScoresUsers(result.data)
-        return axios.get(`/api/profiles/profileIds`, {profileIds: profileIds})
-        .then( (result) => {
-          console.log(result.data);
-        })
+        // return axios.get(`/api/profiles/profileIds`, {profileIds: profileIds})
+        // .then( (result) => {
+        //   console.log(result.data);
+        // })
 
       })
       .catch( (error) => {
