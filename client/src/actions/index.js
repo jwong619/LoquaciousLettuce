@@ -158,6 +158,7 @@ export const changeBlob = (blob) => {
 
 //--------------------------------GAME--------------------------------//
 
+
 export const changeDifficulty = (difficulty) => {
   console.log('difficulty', difficulty);
   return {
@@ -226,9 +227,7 @@ export const saveGame = (profileId, game) => (dispatch, getState) => {
   .catch( (error) => {
     console.error('failed to save game and grab top scores');
   })
-
 }
-
 
 export const changeTopTen = (games) => {
   return {
