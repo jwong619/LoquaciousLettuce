@@ -35,13 +35,15 @@ passport.use('local-signup', new LocalStrategy({
   passReqToCallback: true
 },
   (req, email, password, done) => {
-    var {display} = req.body;
+    //
+    var image = 'http://cutecatsinhats.com/wp-content/uploads/2016/01/lil-bub-party-hat.jpg';
+    var {display, image} = req.body;
     // check to see if there is any account with this email address
     return models.Profile.where({ email }).fetch()
       .then(profile => {
         // create a new profile if a profile does not exist
         if (!profile) {
-          return models.Profile.forge({ email, display }).save();
+          return models.Profile.forge({ email, display, image }).save();
         }
         // throw if any auth account already exists
         if (profile) {

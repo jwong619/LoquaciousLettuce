@@ -37,7 +37,11 @@ router.route('/profile')
 //get the user id first then all the games of user
   //.get(ProfileController.getOne)
 
- // models.Profile.where({id: })
+
+
+ ////not sure about this one yet// models.Profile.where({id: })
+
+
 
   .get(middleware.auth.verify, (req, res) => {
     res.render('profile.ejs', {

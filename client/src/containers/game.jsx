@@ -300,6 +300,11 @@
            allRows.flashDots();
 
          } else {
+
+           console.log('hi');
+           console.log('----> current user',context.props.currentUser);
+           saveGame(context.props.currentUser.id, context.state);
+
            ctx.clearRect(-50, -50, 1500, 1500);
            ctx.fillStyle = 'black';
            ctx.fillRect(5, 5, 400, 600);
@@ -329,9 +334,7 @@
          draw();
          if (context.state.health <= 0) {
            audio.pause();
-           console.log('hi');
-           console.log('----> current user',this.props.currentUser);
-           saveGame(this.props.currentUser.id, context.state);
+
            context.setState({end: true});
            clearInterval(frameCheck);
            clearInterval(drawLoop);

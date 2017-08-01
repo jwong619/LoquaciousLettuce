@@ -263,10 +263,6 @@ export const saveGame = (profileId, game) => {
         console.error('failed to save game and grab top scores');
       })
 
-      // then check all games and for game/difficulty level
-        // need to sort by score and grab the top 10
-          // and then get all users from taht and
-            // all users info
 }
 
 
