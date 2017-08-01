@@ -18,9 +18,4 @@ router.route('/getProfilesByList')
   .post(ProfileController.getProfilesByList)
   ;
 
-router.route('/getProfilesByList2')
-  .post(ProfileController.getProfilesByList2)
-  ;
-
-
 module.exports = router;

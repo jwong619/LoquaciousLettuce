@@ -244,22 +244,23 @@ export const saveGame = (profileId, game) => {
         var scores = rankedTen.map( (item) => {
           return item.score;
         });
+        changeTopTenScores(scores); //***********************************
 
         var profileIds = rankedTen.map( (item) => {
           return item.profile_id;
         });
         console.log('prof_idsss', profileIds);
-        // then get users
-          //return axios.get()
-        //changeTopTenScoresUsers(result.data)
-        // return axios.get(`/api/profiles/profileIds`, {profileIds: profileIds})
-        // .then( (result) => {
-        //   console.log(result.data);
-        // })
+
+        //query function needed from kurt
+        return axios.post(`/api/profiles/getProfilesByList`, {profileIds: profileIds})
+        .then( (result) => {
+          console.log('here are the users---->', result.data);
+          changeTopTenScoresUsers(result.data)
+        })
 
       })
       .catch( (error) => {
-        console.error('failed to save game');
+        console.error('failed to save game and grab top scores');
       })
 
       // then check all games and for game/difficulty level
@@ -273,7 +274,7 @@ export const saveGame = (profileId, game) => {
 
 export const changeTopTenScoresUsers = (users) => {
   return {
-    type: UPDATE_USERS_SCORES,
+    type: UPDATE_TOP_TEN_USERS,
     payload: users
   }
 }
