@@ -231,6 +231,7 @@ export const saveGame = (profileId, game) => (dispatch, getState) => {
         return axios.post('/api/games/getTopTenScoresForSongAtDifficulty', {songId: result.data.song_id, difficulty: result.data.difficulty})
       })
       .then( (result) => {
+
         console.log('data back------>', result.data);
         return dispatch(changeTopTen(result.data));
       })
