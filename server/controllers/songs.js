@@ -191,6 +191,7 @@ module.exports.relTest = (req, res) => {
 //    }}]
 //   })
 
+
 //    withRelated: [{'profiles': function() {
 //      qb.column('display').select().from('profiles').where({id: 7});
 //    }}]
@@ -219,7 +220,7 @@ module.exports.relTest = (req, res) => {
 
 module.exports.relTest2 = (req, res) => {
   console.log('RELTEST2. PARAMS = ', req.params);
-  
+
   models.Song.where({profile_id: req.params.profile_id})
     .query((qb) => {
       qb.orderBy('songname', 'ASC');

@@ -217,7 +217,7 @@
            ctx.fillRect(10, 57, 400, 31);
            ctx.fillStyle = 'black';
            ctx.fillRect(10, 58, 400, 29);
-           
+
            var healthGradientBack = ctx.createLinearGradient(150, 0, 300, 0);
            healthGradientBack.addColorStop(0, 'red');
            healthGradientBack.addColorStop(1, 'yellow');
@@ -242,13 +242,13 @@
                counter++;
                ctx.fillStyle = 'white';
              }
-            
+
            } else {
              ctx.fillStyle = 'white';
              ctx.fillRect(0, 572.5, 400, 10);
            }
 
-// EXCLAMATIONS!        
+// EXCLAMATIONS!
            if (context.state.exclamation !== null) {
              if (context.state.exclamationChange === true) {
                exclamationCounter = 1;
@@ -263,7 +263,7 @@
                exclamationCounter = 1;
              }
            }
-          
+
 // BORDER
            //ctx.fillStyle = 'rgb(' + (255 - context.state.health * 2) + ',' + ( Math.floor(context.state.health * 2.5)) + ',' + (Math.floor( context.state.health * 2.5)) + ')';
            var borderTop = ctx.createLinearGradient(0, 0, 0, 10);
@@ -272,13 +272,13 @@
            ctx.fillStyle = borderTop;
            ctx.fillRect(0, 0, canvas.width, 10);
 
-           
+
            var borderLeft = ctx.createLinearGradient(0, 0, 10, 0);
            borderLeft.addColorStop(0, 'white');
            borderLeft.addColorStop(1, 'rgb(' + (255 - context.state.health * 2) + ',' + ( Math.floor(context.state.health * 2.5)) + ',' + (Math.floor( context.state.health * 2.5)) + ')');
            ctx.fillStyle = borderLeft;
            ctx.fillRect(0, 0, 10, canvas.height);
-           
+
            var borderBot = ctx.createLinearGradient(canvas.width - 10, 0, canvas.width, 0);
            borderBot.addColorStop(0, 'rgb(' + (255 - context.state.health * 2) + ',' + ( Math.floor(context.state.health * 2.5)) + ',' + (Math.floor( context.state.health * 2.5)) + ')');
            borderBot.addColorStop(1, 'white');
@@ -340,6 +340,18 @@
          }
        }, 1000 / 30);
 
+
+       /*
+
+      var refreshId = setInterval(function() {
+      var properID = CheckReload();
+      if (properID > 0) {
+          clearInterval(refreshId);
+        }
+      }, 10000);
+
+       */
+
        var modifier = 1;
        if (context.state.difficulty === 'super_beginner') {
          modifier = .25;
@@ -377,8 +389,8 @@
        };
 
        function ListenEvents() {
-         
-         
+
+
          var validMove = (keyCodes) =>{
            context.increaseAttempt();
            var moveCheck = checkMove();
@@ -392,7 +404,7 @@
              } else if (moveCheck[moveCheck.length - 1] < 20) {
                context.setState({exclamation: 'Great!', exclamationChange: true });
              } else if (moveCheck[moveCheck.length - 1] < 30) {
-               context.setState({exclamation: 'Good!', exclamationChange: true }); 
+               context.setState({exclamation: 'Good!', exclamationChange: true });
              } else {
                context.setState({exclamation: 'Nice!', exclamationChange: true});
              }

@@ -9,27 +9,17 @@ router.route('/')
   ;
 
 
-// router.route('/getAllGamesForSongAtDifficulty')
-//   .post(GameController.getAllGamesForSongAtDifficulty)
-//   ;
-
 router.route('/getAllGamesForSongAtDifficulty')
- .post(GameController.getAllGamesForSongAtDifficulty)
- ;
-
+  .post(GameController.getAllGamesForSongAtDifficulty)
+  ;
 
 router.route('/:id')
   .get(GameController.getOne)
   .delete(GameController.deleteOne)
   ;
 
-router.route('/getAllGamesForUser/:id')
+router.route('/getAllGamesForUser/:profile_id')
   .get(GameController.getAllGamesForUser)
-  ;
-
-// Top ten scores (all players), ordered DESC by score per song per difficulty with profile data
-router.route('/getTopTenScoresForSongAtDifficulty')
-  .post(GameController.getTopTenScoresForSongAtDifficulty)
   ;
 
 // Highest score by one player on one song on any Difficulty

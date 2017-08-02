@@ -191,6 +191,27 @@ module.exports.getAllGamesForSongAtDifficulty = (req, res) => {
 };
 
 
+
+module.exports.getAllGamesForSongAtDifficultylevel = (req, res) => {
+ console.log('REQ.BODY = ', req.body);
+ // console.log('REQ.PARAMS', req.params);
+ // res.send(201, 'hi');
+ models.Game.where({ song_id: req.body.songId, difficultylevel: req.body.difficulty }).fetchAll()
+   .then(games => {
+     if (!games) {
+       throw games;
+     }
+     res.status(200).send(games);
+   })
+   .error(err => {
+     res.status(500).send(err);
+   })
+   .catch(() => {
+     res.sendStatus(404);
+   });
+};
+
+
 // I DO NOT BELIEVE WE NEED TO UPDATE GAMES RECORDS (?)
 /*
 module.exports.update = (req, res) => {  // [ U ]

@@ -1,6 +1,5 @@
 import {combineReducers} from 'redux';
 import test from './example.js';
-import topTenScoresUsersReducer from './reducer-top-ten-scores-users'; // change back to reducer-users when fixed null case and undefined
 import TopTenScoresUsersReducer from './reducer-top-ten-scores-users';
 import TopTenScoresReducer from './reducer-top-ten-scores';
 import GameReducer from './reducer-game';
