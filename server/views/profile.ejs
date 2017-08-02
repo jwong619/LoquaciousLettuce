@@ -43,6 +43,18 @@
                   picture.onchange();
                 </script>
 
+                 <script>
+                   var picture = document.getElementById("file-input");
+                   picture.onchange = function () {
+                    var files = picture.files;
+                    if(!!files[0]) {
+                      var source = document.getElementById("profile-pic");
+                      var blob = URL.createObjectURL(files[0]);
+                      source.src = blob;
+                    }
+                   }
+                  picture.onchange();
+                </script>
                 <% if (user.email) { %>
                 <p>
 <!--                     <strong>email</strong>: <%= user.email %> -->
