@@ -232,6 +232,7 @@ export const saveGame = (profileId, game) => (dispatch, getState) => {
   } else if (game.difficulty === 'rockstar') {
     level = 5;
   }
+
   console.log('game when end---', game);
   var score = game.scoreP1 || game.score;
 
