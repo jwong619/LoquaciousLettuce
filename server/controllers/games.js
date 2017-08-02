@@ -141,7 +141,7 @@ module.exports.getAllForUser = (req, res) => {  // [ R ]
 
 module.exports.getTopTenScoresForSongAtDifficulty = (req, res) => {
   console.log('REQ.BODY = ', req.body);
-  models.Game.where({ song_id: req.body.song_id, difficulty: req.body.difficulty })
+  models.Game.where({ song_id: req.body.songId, difficulty: req.body.difficulty })
   .orderBy('-score')
   .fetchAll({
     withRelated: ['profiles', 'songs'],

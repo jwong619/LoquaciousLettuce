@@ -1,10 +1,10 @@
-export default (state = [], action) => {
-  switch (action.type) {
-    case 'CHANGE_USERS' : {
+// export default (state = [], action) => {
+//   switch (action.type) {
+//     case 'CHANGE_USERS' : {
 
-    }
-  }
-}
+//     }
+//   }
+// }
 
 
 

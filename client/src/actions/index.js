@@ -211,10 +211,8 @@ export const selectMode = (playerMode) => {
 
 
 
-export const saveGame = (profileId, game) => {
-  console.log('current game---', game);
-  console.log('current profile---', profileId);
-  console.log('diff---', game.difficulty);
+export const saveGame = (profileId, game) => (dispatch, getState) => {
+  console.log('in the saveGame function');
   var level = 0;
   if (game.difficulty === 'super beginner') {
     level = 1;
@@ -227,37 +225,21 @@ export const saveGame = (profileId, game) => {
   } else if (game.difficulty === 'rockstar') {
     level = 5;
   }
-  // axios.get('/') // get song first then store game
       axios.post('/api/games', {profileId: profileId, song: game.song, score: game.score, difficulty: level})
       .then( (result) => {
         console.log('result for save game', result.data);
-        return axios.post('/api/games/getAllGamesForSongAtDifficultylevel', {songId: result.data.song_id, difficulty: result.data.difficultylevel})
+        return axios.post('/api/games/getTopTenScoresForSongAtDifficulty', {songId: result.data.song_id, difficulty: result.data.difficulty})
       })
       .then( (result) => {
-        //console.log('games------>', result.data);
-        var ranked = result.data.sort( (a, b) => {
-          return b.score - a.score;
+        console.log('data back------>', result.data);
+
+        var usersRanked = result.data.map( (games) => {
+          return games.profiles;
         });
-        var rankedTen = ranked.slice(0,10);
-        console.log(rankedTen);
-
-        var scores = rankedTen.map( (item) => {
-          return item.score;
-        });
-        changeTopTenScores(scores); //***********************************
-
-        var profileIds = rankedTen.map( (item) => {
-          return item.profile_id;
-        });
-        console.log('prof_idsss', profileIds);
-
-        //query function needed from kurt
-        return axios.post(`/api/profiles/getProfilesByList`, {profileIds: profileIds})
-        .then( (result) => {
-          console.log('here are the users---->', result.data);
-          changeTopTenScoresUsers(result.data)
-        })
-
+        console.log('usersRanked---', usersRanked);
+        console.log('before---');
+        return dispatch(changeTopTenScoresUsers(usersRanked));
+        // console.log('after---');
       })
       .catch( (error) => {
         console.error('failed to save game and grab top scores');
@@ -266,95 +248,21 @@ export const saveGame = (profileId, game) => {
 }
 
 
-//--------------------------------SCORELIST--------------------------------//
-
-export const changeTopTenScoresUsers = (users) => {
-  return {
-    type: UPDATE_TOP_TEN_USERS,
-    payload: users
-  }
-}
-// export const totalSingleScore = (score) => {
-//   console.log("score---", score);
-//   return {
-//     type: 'UPDATE_TOTAL_SCORE',
-//     payload: view
-//   };
-// };
-
-
-export const saveGame = (profileId, game) => {
-  console.log('current game---', game);
-  console.log('current profile---', profileId);
-  console.log('diff---', game.difficulty);
-  var level = 0;
-  if (game.difficulty === 'super beginner') {
-    level = 1;
-  } else if (game.difficulty === 'beginner') {
-    level = 2;
-  } else if (game.difficulty === 'intermediate') {
-    level = 3;
-  } else if (game.difficulty === 'advanced') {
-    level = 4;
-  } else if (game.difficulty === 'rockstar') {
-    level = 5;
-  }
-  // axios.get('/') // get song first then store game
-      axios.post('/api/games', {profileId: profileId, song: game.song, score: game.score, difficulty: level})
-      .then( (result) => {
-        console.log('result for save game', result.data);
-        return axios.post('/api/games/getAllGamesForSongAtDifficultylevel', {songId: result.data.song_id, difficulty: result.data.difficultylevel})
-      })
-      .then( (result) => {
-        //console.log('games------>', result.data);
-        var ranked = result.data.sort( (a, b) => {
-          return b.score - a.score;
-        });
-        var rankedTen = ranked.slice(0,10);
-        console.log(rankedTen);
-
-        var scores = rankedTen.map( (item) => {
-          return item.score;
-        });
-        changeTopTenScores(scores); //***********************************
-
-        var profileIds = rankedTen.map( (item) => {
-          return item.profile_id;
-        });
-        console.log('prof_idsss', profileIds);
-
-        //query function needed from kurt
-        return axios.post(`/api/profiles/getProfilesByList`, {profileIds: profileIds})
-        .then( (result) => {
-          console.log('here are the users---->', result.data);
-          changeTopTenScoresUsers(result.data)
-        })
-
-      })
-      .catch( (error) => {
-        console.error('failed to save game and grab top scores');
-      })
-
-      // then check all games and for game/difficulty level
-        // need to sort by score and grab the top 10
-          // and then get all users from taht and
-            // all users info
-}
-
 
 //--------------------------------SCORELIST--------------------------------//
 
 export const changeTopTenScoresUsers = (users) => {
+  // console.log('tessstttttt');
   return {
-    type: UPDATE_TOP_TEN_USERS,
+    type: 'UPDATE_TOP_TEN_USERS',
     payload: users
   }
 }
 
 export const changeTopTenScores = (scores) => {
   return {
-    type: UPDATE_TOP_TEN_USERS_SCORES,
-    payload: users
+    type: 'UPDATE_TOP_TEN_USERS_SCORES',
+    payload: scores
   }
 }
 

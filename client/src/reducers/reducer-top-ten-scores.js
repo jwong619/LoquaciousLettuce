@@ -5,9 +5,10 @@ var sampleScores =  UsersData.map( (user) => {
 
 export default (state = sampleScores, action) => {
   switch (action.type) {
-    case 'UPDATE_TOP_TEN_USERS_SCORES':
+    case 'UPDATE_TOP_TEN_USERS_SCORES': {
       state = action.payload;
       break;
+    }
   }
   return state;
 };

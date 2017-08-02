@@ -11,7 +11,7 @@ import {getTopTenScores} from '../actions/index';
 class ScoreList extends React.Component {
 
   createScoreListEntries() {
-
+    console.log('jsbfksjzfnsk', this.props.topTenScoresUsers);
     var sorted = this.props.topTenScoresUsers.sort( (a, b) => {
       return b.score - a.score;
     });
