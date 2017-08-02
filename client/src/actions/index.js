@@ -199,7 +199,6 @@ export const selectMode = (playerMode) => {
 
 
 
-
 //--------------------------------SCORELIST--------------------------------//
 
 // export const totalSingleScore = (score) => {
