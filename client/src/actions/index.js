@@ -247,8 +247,6 @@ export const saveGame = (profileId, game) => (dispatch, getState) => {
 
 }
 
-
-
 //--------------------------------SCORELIST--------------------------------//
 
 export const changeTopTenScoresUsers = (users) => {

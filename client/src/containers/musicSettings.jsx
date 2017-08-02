@@ -84,6 +84,7 @@ class MusicSettings extends React.Component {
       key: key
     });
   }
+  
 
   handleSubmit(event) {
     event.preventDefault();
@@ -101,7 +102,7 @@ class MusicSettings extends React.Component {
     var file = document.getElementById("music");
     var context = this;
     file.onchange = function() {
-      var files = this.files;
+      var files = file.files;
       if (!!files[0]){
         context.props.changeBlob(URL.createObjectURL(files[0]));
       }

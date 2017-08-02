@@ -6,12 +6,29 @@
     </div>
 
     <div class="row">
-
-        <!-- LOCAL INFORMATION -->
+      <p> Click to Change Picture</p>
+        <!-- LOCAL INFORMATION  -->
         <div class="col-sm-4">
             <div id ="imageHolder" class="well">
-            <!-- <input id="uploadImageBtn" type="file" style="" name="imageurl"> -->
+              <div class="image-upload">
+                <label for="file-input">
+                    <img id="profile-pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKlIq0GXgjT8KsGU65PSIH4Lt_0ciXk0XKHIqo-ZySwHnT3UetxuBbnQ" height="250px" width="250px"/>
+                </label>
+                <input id="file-input" type="file" accept="image/gif, image/jpeg, image/png" />
+            </div>
 
+                 <script>
+                   var picture = document.getElementById("file-input");
+                   picture.onchange = function () {
+                    var files = picture.files;
+                    if(!!files[0]) {
+                      var source = document.getElementById("profile-pic");
+                      var blob = URL.createObjectURL(files[0]);
+                      source.src = blob;
+                    }
+                   }
+                  picture.onchange();
+                </script> 
                 <% if (user.email) { %>
                 <p>
                     <strong>email</strong>: <%= user.email %>

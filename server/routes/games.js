@@ -23,8 +23,8 @@ router.route('/getAllGamesForUser/:profile_id')
   ;
 
 router.route('/getTopTenScoresForSongAtDifficulty')
-.post(GameController.getTopTenScoresForSongAtDifficulty)
-;
+  .post(GameController.getTopTenScoresForSongAtDifficulty)
+  ;
 
 // Highest score by one player on one song on any Difficulty
 router.route('/getHighscoreForUserForSong')
