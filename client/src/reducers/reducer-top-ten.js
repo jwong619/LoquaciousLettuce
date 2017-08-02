@@ -1,3 +1,4 @@
+
 import UsersData from './reducer-sample-data';
 
 export default (state = UsersData, action) => {

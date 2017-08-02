@@ -12,8 +12,6 @@ class ScoreList extends React.Component {
 
   createScoreListEntries() {
     console.log('top games', this.props.topTen);
-
-
     return this.props.topTen.map((game, index) => {
       var user = game.profiles;
       return (
