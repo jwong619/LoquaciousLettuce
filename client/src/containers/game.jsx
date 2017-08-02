@@ -100,7 +100,7 @@
        var makeRow = function(hexCode) {
          var rowArr = [0, 0, 0, 0, ];
          var corArr = ['a', 's', 'd', 'f'];
-         
+
          for (let i = 0; i < 4; i++) {
            if (patterns[hexCode][i] === 1) {
              rowArr[i] = {
@@ -235,7 +235,7 @@
                context.setState({hit: false});
                counter = 0;
              } else {
-               
+
               //  img.src = 'assets/dots/crosshairHit.png';
               //  var frame = (context.state.gifFrame % 30) + 1;
               // //  ctx.drawImage(img, (img.width / 30) * frame, 0, img.width / 30, img.height, 20, 552, 50, 50);
@@ -306,9 +306,9 @@
            });
            allRows.checkDelete();
            allRows.flashDots();
-           
 
-           
+
+
          } else {
 
            console.log('hi');
