@@ -12,6 +12,7 @@ import CurrentUserReducer from './reducer-current-user';
 import ActiveProfileReducer from './reducer-active-profile';
 // import totalScoreSingleReducer from './reducer-total-score-single';
 import YoutubeReducer from './reducer-youtube';
+import TopTenReducer from './reducer-top-ten';
 
 
 //combined reducers comines all the files inside the reduce file and allReducer becomes the storage
@@ -27,7 +28,8 @@ const allReducers = combineReducers({
   currentUser: CurrentUserReducer,
   activeProfileReducer: ActiveProfileReducer,
   youtube: YoutubeReducer,
-  topTenScores: TopTenScoresReducer
+  topTenScores: TopTenScoresReducer,
+  topTen: TopTenReducer
 });
 
 export default allReducers;
