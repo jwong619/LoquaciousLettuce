@@ -197,7 +197,6 @@ export const selectMode = (playerMode) => {
   };
 };
 
-
 //--------------------------------SCORELIST--------------------------------//
 
 export const saveGame = (profileId, game) => (dispatch, getState) => {
@@ -229,7 +228,6 @@ export const saveGame = (profileId, game) => (dispatch, getState) => {
 
 }
 
-//--------------------------------SCORELIST--------------------------------//
 
 export const changeTopTen = (games) => {
   return {
