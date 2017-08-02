@@ -27,12 +27,8 @@ class ScoreList extends React.Component {
                 <img id="userImage" src={user.imageurl} height="45" width="45"/>
                   {user.display}
                 </div>
-
-
                 <div id="score">{game.score}<br></br></div>
               </div>
-
-
           </li>
 
         </div>
