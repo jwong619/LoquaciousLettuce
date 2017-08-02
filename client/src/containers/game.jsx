@@ -311,9 +311,8 @@
 
          } else {
 
-           console.log('hi');
-           console.log('----> current user', context.props.currentUser);
-           saveGame(context.props.currentUser.id, context.state);
+           console.log('----> current user',context.props.currentUser);
+           context.props.saveGame(context.props.currentUser.id, context.state);
 
            ctx.clearRect(-50, -50, 1500, 1500);
            ctx.fillStyle = 'black';
