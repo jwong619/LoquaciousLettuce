@@ -37,12 +37,6 @@ router.route('/profile')
 //get the user id first then all the games of user
   //.get(ProfileController.getOne)
 
-
-
- ////not sure about this one yet// models.Profile.where({id: })
-
-
-
   .get(middleware.auth.verify, (req, res) => {
     res.render('profile.ejs', {
       user: req.user // get the user out of session and pass to template

@@ -36,14 +36,14 @@ passport.use('local-signup', new LocalStrategy({
 },
   (req, email, password, done) => {
     //
-    var image = 'http://cutecatsinhats.com/wp-content/uploads/2016/01/lil-bub-party-hat.jpg';
-    var {display, image} = req.body;
+    var {display, imageurl} = req.body;
+    var imageurl = !!imageurl ? imageurl : 'https://files.slack.com/files-pri/T5B9UC4RM-F6GNVBDJ6/photo2.png';
     // check to see if there is any account with this email address
     return models.Profile.where({ email }).fetch()
       .then(profile => {
         // create a new profile if a profile does not exist
         if (!profile) {
-          return models.Profile.forge({ email, display, image }).save();
+          return models.Profile.forge({ email, display, imageurl }).save();
         }
         // throw if any auth account already exists
         if (profile) {

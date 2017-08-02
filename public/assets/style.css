@@ -21,7 +21,7 @@ body {
 .logo{
   margin: auto !important;
   vertical-align: middle;
-  
+
 }
 .youtubeform {
   /*margin: left !important;*/
@@ -291,7 +291,7 @@ body {
   float: right;
   margin-right: 18px;
 }
-/*  background-color: red;*/
+
 
 #profileBtns {
   margin-left: 25%;
@@ -300,6 +300,17 @@ body {
 #imageHolder {
   height: 410px;
 }
+
+.profileImageUpload {
+  color: white;
+  margin-bottom: 10px;
+}
+
+#uploadImageBtn {
+  display: inline-block;
+  color: white;
+}
+
 
 .example-leave {
 
@@ -332,3 +343,13 @@ body {
 
 
 /*           Jey's Styling            */
+
+.singlePlayerGame {
+  background-image: url("https://www.pexels.com/photo/sky-space-milky-way-stars-110854/");
+}
+
+
+
+
+
+
