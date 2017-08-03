@@ -46,10 +46,6 @@ class ScoreList extends React.Component {
   }
 
   render () {
-    // var selectUser = this.props.selectUser.bind(this);
-    // var showModal = this.props.showModal.bind(this);
-    // var closeModal = this.props.closeModal.bind(this);
-
     return (
       <div>
         <ol>
