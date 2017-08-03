@@ -209,7 +209,7 @@ module.exports.getPlayerStats = (req, res) => {
 
 module.exports.getTopTenScoresForSongAtDifficulty = (req, res) => {
   console.log('REQ.BODY = ', req.body);
-  models.Game.where({ song_id: req.body.song_id, difficulty: req.body.difficulty })
+  models.Game.where({ song_id: req.body.songId, difficulty: req.body.difficulty })
   .orderBy('-score')
   .fetchAll({
     withRelated: ['profiles', 'songs'],
@@ -243,7 +243,7 @@ module.exports.getAllSongsForUser = (req, res) => {
 */
 module.exports.getAllGamesForSongAtDifficulty = (req, res) => {
   console.log('REQ.BODY = ', req.body);
-  models.Game.where({ song_id: req.body.song_id, difficulty: req.body.difficulty }).fetchAll()
+  models.Game.where({ song_id: req.body.songId, difficulty: req.body.difficulty }).fetchAll()
   .then(games => {
     if (!games) {
       throw games;

@@ -218,11 +218,9 @@ export const saveGame = (profileId, game) => (dispatch, getState) => {
   }
   axios.post('/api/games', {profileId: profileId, song: game.song, score: game.score, difficulty: level})
   .then( (result) => {
-    //console.log('result for save game', result.data);
     return axios.post('/api/games/getTopTenScoresForSongAtDifficulty', {songId: result.data.song_id, difficulty: result.data.difficulty})
   })
   .then( (result) => {
-    //console.log('data back------>', result.data);
     return dispatch(changeTopTen(result.data));
   })
   .catch( (error) => {
@@ -253,11 +251,9 @@ export const getTopGames = (game) => (dispatch,getState) => {
   }
   axios.post(`/api/songs/nameUrl`, {url: game.song})
   .then( (result) => {
-    // console.log('result------>here', result.data);
     return axios.post('/api/games/getTopTenScoresForSongAtDifficulty', {songId: result.data.id, difficulty: level})
   })
   .then( (result) => {
-    // console.log('should be top scores for mount------->', result.data);
     return dispatch(changeTopTen(result.data));
   })
   .catch( (error) => {

@@ -10,11 +10,11 @@ import {getTopGames} from '../actions/index';
 
 class ScoreList extends React.Component {
 
-  componentWillMount () {
-    console.log('top games on mount', this.props.topTen);
-    //query for the top 10
-    this.props.getTopGames(this.props.game);
-  }
+  // componentWillMount () {
+  //   console.log('top games on mount', this.props.topTen);
+  //   //query for the top 10
+  //   this.props.getTopGames(this.props.game);
+  // }
 
   createScoreListEntries() {
     console.log('top games --->', this.props.topTen);
