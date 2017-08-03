@@ -53,6 +53,7 @@ h5 {
   text-align: center;
 }
 
+
 html {
   cursor: url('pics/cursorBlue.png'), auto !important;
   /*background-image: url("pics/test.gif");*/
@@ -407,7 +408,7 @@ body {
 .searchTab {
   /*margin-right: 10px;*/
   /*margin-left: px;*/
-  float: right; 
+  float: right;
   background-color: black;
   border-style: double;
   border-color: white;
