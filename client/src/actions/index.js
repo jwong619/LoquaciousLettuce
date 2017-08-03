@@ -216,7 +216,10 @@ export const saveGame = (profileId, game) => (dispatch, getState) => {
   } else if (game.difficulty === 'rockstar') {
     level = 5;
   }
-  axios.post('/api/games', {profileId: profileId, song: game.song, score: game.score, difficulty: level})
+  console.log('game when end---', game);
+  var score = game.scoreP1 || game.score;
+
+  axios.post('/api/games', {profileId: profileId, song: game.song, score: score, difficulty: level})
   .then( (result) => {
     return axios.post('/api/games/getTopTenScoresForSongAtDifficulty', {songId: result.data.song_id, difficulty: result.data.difficulty})
   })

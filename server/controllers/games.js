@@ -31,6 +31,7 @@ module.exports.getOne = (req, res) => {  // [ R ]
 
 
 module.exports.create = (req, res) => {  // [ C ]
+  console.log('bodyyyy---', req.body);
   models.Game.forge({
     profile_id: req.body.profileId,
     song_id: 1,
