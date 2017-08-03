@@ -1,4 +1,10 @@
-export default (state = {visibility: false, user: {display:'julia'}, score: 0}, action) => {
+export default (state = {
+  visibility: false,
+  user: {display:'julia'},
+  score: 0,
+  stats: { games: [{
+    averageScore: 1, numGamesDifficulty: {}, topScoreDifficulty: {} }, {}] }
+}, action) => {
   switch (action.type) {
     case 'SHOW_MODAL' : {
       state = action.payload;

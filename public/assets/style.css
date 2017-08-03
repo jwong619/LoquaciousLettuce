@@ -37,6 +37,7 @@ h4 {
   text-align: center;
 }
 
+
 html {
   cursor: url('pics/cursorBlue.png'), auto !important;
   /*background-image: url("pics/test.gif");*/
@@ -116,7 +117,27 @@ body {
 }
 
 #modals {
-/*  opacity: .8;*/
+  font-family: Iceland;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.modal-header, .modal-body {
+  background-color: #1a1a1a;
+}
+
+#modalTitle {
+  color: blue;
+  font-size: 40px;
+  text-align: center;
+}
+
+#modalTitleUserName {
+  color: white;
+  font-size: 40px;
+  font-weight: 900;
+  float: left;
+  margin-left: 70px;
 }
 
 #scoresList {
@@ -208,7 +229,7 @@ body {
 .searchTab {
   margin-right: 10px;
   /*margin-left: px;*/
-  float: right; 
+  float: right;
   background-color: black;
   border-style: double;
   border-color: white;
@@ -369,7 +390,7 @@ body {
 }
 
 .modal-body {
-  height: 200px;
+  height: 210px;
   overflow-y: auto;
   background-color: lightgrey;
 }
@@ -379,11 +400,11 @@ body {
 }
 
 #lvl {
-  padding-top: 25px;
   height: 160px;
 }
 
 #scr {
+  margin-top: 20px;
   height: 160px;
 }
 

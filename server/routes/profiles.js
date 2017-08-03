@@ -14,6 +14,10 @@ router.route('/:id') // NOTE: PAYLOAD DATA ARE EMBEDDED IN THE req OBJECT, BUT A
   // .delete(ProfileController.deleteOne)
   ;
 
+router.route('/:display')
+.get(ProfileController.getOneByDisplay)
+;
+
 router.route('/getProfilesByList')
   .post(ProfileController.getProfilesByList)
   ;

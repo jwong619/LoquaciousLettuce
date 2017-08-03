@@ -48,6 +48,25 @@ module.exports.getOne = (req, res) => {
 };
 
 
+module.exports.getOneByDisplay = (req, res) => {
+  console.log('parrrr', req.params);
+  res.send('hihi');
+  // models.Profile.where({ display: req.params.display }).fetch()
+  //   .then(profile => {
+  //     if (!profile) {
+  //       throw profile;
+  //     }
+  //     res.status(200).send(profile);
+  //   })
+  //   .error(err => {
+  //     res.status(500).send(err);
+  //   })
+  //   .catch(() => {
+  //     res.sendStatus(404);
+  //   });
+};
+
+
 module.exports.update = (req, res) => {
   models.Profile.where({ id: req.params.id }).fetch()
     .then(profile => {
@@ -117,6 +136,7 @@ module.exports.getProfilesByList = (req, res) => {
 ////////////////  TEST FUNCTION FOR DB QUERIES  ////////////////////
 ////////////////////////////////////////////////////////////////////
 
+
 module.exports.testAll = (req, res) => {
   models.Profile.fetchAll()
     .then(profiles => {
@@ -127,3 +147,6 @@ module.exports.testAll = (req, res) => {
       res.status(503).send(err);
     });
 };
+
+
+

@@ -52,13 +52,30 @@ export const changeView = (view) => {
 };
 
 
-export const showModal = (obj) => {
+export const showModal = (obj) => (dispatch, getState) => {
   console.log("OPENED ---obj", obj);
-  return {
-    type: 'SHOW_MODAL',
-    payload: obj
-  };
+
+  axios.get('/api/profiles/' + obj.user.id)
+  .then( (result) => {
+    return axios.get('api/games/getPlayerStats/' + result.data.email)
+  })
+  .then( (result) => {
+    // console.log('stats--', result.data);
+    // console.log('stars', result.data.games[0].numGamesDifficulty);
+    // console.log('scores', result.data.games[0].topScoreDifficulty);
+
+    var modalStats = obj;
+    modalStats['stats'] = result.data;
+    return dispatch( {
+      type: 'SHOW_MODAL',
+      payload: modalStats
+    } )
+  })
+  .catch( (error) => {
+    console.error(error);
+  })
 };
+
 
 export const closeModal = (obj) => {
   console.log("CLOSED --");

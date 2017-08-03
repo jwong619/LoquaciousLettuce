@@ -46,13 +46,17 @@ class ScoreList extends React.Component {
   }
 
   render () {
+    // console.log('stars', this.props.showScoreModal.stats.games[0].numGamesDifficulty);
+    // console.log('scores', this.props.showScoreModal.stats.games[0].topScoreDifficulty);
+    //{this.props.showScoreModal.stats.games[0].numGamesDifficulty[1]}
+
     return (
       <div>
         <ol>
           <div>
-            <Modal id="modals" show={this.props.showScoreModal.visibility} onHide={ () => this.props.closeModal({visibility: false, user: {username:'julia'}}) }>
+            <Modal id="modals" show={this.props.showScoreModal.visibility} onHide={ () => this.props.closeModal({visibility: false, user: {display:'julia'}}) }>
               <Modal.Header closeButton>
-                <Modal.Title> {this.props.showScoreModal.user.display} RANKING: ROCKSTAR </Modal.Title>
+                <Modal.Title id="modalTitle"> <span id="modalTitleUserName">{this.props.showScoreModal.user.display} </span>RANK: ROCKSTAR </Modal.Title>
               </Modal.Header>
               <Modal.Body >
                 <div id="modPic" className="col-sm-4"><img src={this.props.showScoreModal.user.imageurl} height="160" width="160"/></div>
@@ -65,12 +69,9 @@ class ScoreList extends React.Component {
                   Rockstar: <br></br>
                 </div>
 
-                <div id="scr" className="col-sm-2"> highscores: {this.props.showScoreModal.score}</div>
+                <span id="scr" className="col-sm-2"> highscores: {this.props.showScoreModal.score}</span>
 
               </Modal.Body>
-              <Modal.Footer>
-               footer
-              </Modal.Footer>
             </Modal>
           </div>
             {this.createScoreListEntries()}

@@ -2,6 +2,7 @@ const express = require('express');
 const middleware = require('../middleware');
 //const models = require('../db/models');
 //const ProfileController = require('./controllers').Profiles;
+//const GameController = require('./controllers').Games;
 
 const router = express.Router();
 
@@ -32,7 +33,7 @@ router.route('/signup')
   }));
 
 router.route('/profile')
-//
+
 // query db for all user games
 //get the user id first then all the games of user
   //.get(ProfileController.getOne)
@@ -40,6 +41,7 @@ router.route('/profile')
   .get(middleware.auth.verify, (req, res) => {
     res.render('profile.ejs', {
       user: req.user // get the user out of session and pass to template
+      //stats
       //games:
       //
       //

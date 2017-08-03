@@ -230,7 +230,7 @@
            ctx.fillRect(10, 60, context.state.health * 4, 25);
 
 // Hit the dots
-           
+
            if (context.state.hit === true) {
              if (counter === 5) {
                context.setState({hit: false});
@@ -250,7 +250,7 @@
            }
            ctx.font = '30px Iceland';
            ctx.fillStyle = 'white';
-           
+
            var frame = (context.state.gifFrame % 29);
            ctx.drawImage(targetImg, (targetImg.width / 30) * frame, 0, targetImg.width / 30, targetImg.height, 20, 552, 50, 50);
            ctx.fillText('A', 37, 586);
