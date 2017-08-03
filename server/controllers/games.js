@@ -33,20 +33,10 @@ module.exports.getOne = (req, res) => {  // [ R ]
 
 
 module.exports.create = (req, res) => {  // [ C ]
-  // console.log('--->about to save game');
-  // console.log('profileID----------------', req.user.id);
-  // console.log('bod----------------', req.body);
-  // res.send(201, 'saveddddddd???')
-
-
-
   models.Game.forge({
     profile_id: req.body.profileId,
     song_id: 1,
     score: req.body.score,
-
-    //difficulty: req.body.difficulty,
-
     difficulty: req.body.difficulty,
 
   })
@@ -68,11 +58,11 @@ module.exports.getAllGamesForUser = (req, res) => {
       qb.orderBy('score', 'DESC');
     }}],
   })
-  .then(game => {
-    if (!game) {
-      throw game;
+  .then(games => {
+    if (!games) {
+      throw games;
     }
-    res.status(200).send(game);
+    res.status(200).send(games);
   })
   .error(err => {
     res.status(500).send(err);
@@ -142,9 +132,86 @@ module.exports.getAllForUser = (req, res) => {  // [ R ]
     });
 };
 
+
+module.exports.getPlayerStats = (req, res) => {
+  // QUERY DB TO GET THE PROFILE ID FROM THE PROFILE EMAIL
+  let profile_id = 0;
+  
+  models.Profile.where({ email: req.params.email})
+  .fetch()
+  .then(profile => {
+    profile_id = profile.id;
+  })
+  .then(games => {
+    // QUERY DB TO GET GAMES WITH RELATED
+    models.Game.where({profile_id: profile_id})
+    .fetchAll({
+      withRelated: ['profiles', 'songs'],
+    })
+    // CHAIN-INVOKE A SEPARATE PACKAGING FUNCTION WHICH:
+    .then(games => { 
+      var stats = {
+        topScoreDifficulty: {
+          1: 0,
+          2: 0,
+          3: 0,
+          4: 0,
+          5: 0,
+        },
+
+        numGamesDifficulty: {
+          1: 0,
+          2: 0,
+          3: 0,
+          4: 0,
+          5: 0,
+        },
+
+        averageScore: 0,
+
+      };
+    // CALCULATES:
+      let len = games.models.length;
+      let totalScores = 0;
+
+      for (let i = 0; i < len; i++) {
+      // NUMBER OF GAMES PER DIFF
+        let dLevel = games.models[i].attributes.difficulty;
+        stats.numGamesDifficulty[dLevel]++;
+      // TOP SCORE PER DIFF
+        if (stats.topScoreDifficulty[dLevel] < games.models[i].attributes.score) {
+          stats.topScoreDifficulty[dLevel] = games.models[i].attributes.score;
+        }
+      // KEEP TRACK OF TOTAL TO DERIVE AVERAGE LATER
+        totalScores += games.models[i].attributes.score;
+      }
+      // AVERAGE SCORE OF ALL GAMES
+      stats.averageScore = (totalScores / len).toFixed(2);
+
+      // ADDS THESE NEW PROPERTIES TO THE RESPONSE OBJECT
+      games.unshift(stats);
+
+      return games; // THIS IS REQUIRED BECAUSE THIS .then IS *NESTED*
+    })
+    .then(games => {
+      if (!games) {
+        throw games;
+      }
+      res.status(200).send({games});
+    })
+    .error(err => {
+      res.status(500).send(err);
+    })
+    .catch(() => {
+      res.sendStatus(404);
+    });
+  });
+};
+
+
 module.exports.getTopTenScoresForSongAtDifficulty = (req, res) => {
   console.log('REQ.BODY = ', req.body);
-  models.Game.where({ song_id: req.body.songId, difficulty: req.body.difficulty })
+  models.Game.where({ song_id: req.body.song_id, difficulty: req.body.difficulty })
   .orderBy('-score')
   .fetchAll({
     withRelated: ['profiles', 'songs'],
@@ -191,27 +258,6 @@ module.exports.getAllGamesForSongAtDifficulty = (req, res) => {
   .catch(() => {
     res.sendStatus(404);
   });
-};
-
-
-
-module.exports.getAllGamesForSongAtDifficultylevel = (req, res) => {
- console.log('REQ.BODY = ', req.body);
- // console.log('REQ.PARAMS', req.params);
- // res.send(201, 'hi');
- models.Game.where({ song_id: req.body.songId, difficultylevel: req.body.difficulty }).fetchAll()
-   .then(games => {
-     if (!games) {
-       throw games;
-     }
-     res.status(200).send(games);
-   })
-   .error(err => {
-     res.status(500).send(err);
-   })
-   .catch(() => {
-     res.sendStatus(404);
-   });
 };
 
 

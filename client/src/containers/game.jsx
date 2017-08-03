@@ -197,15 +197,15 @@
            var x = 5;
            for (var i = 0; i < bufferLength; i++) {
              barHeight = frequencyData[i];
-             ctx.fillStyle = 'rgb(' + (barHeight + 100) + ',50,255)';
+             ctx.fillStyle = 'rgba( 10,' + (barHeight + 100) +',255, 0.4)';
              ctx.fillRect(x, 600 - 2 * barHeight, barWidth, 2 * barHeight);
              x += barWidth;
            }
 // ACTUAL GAME GAME STUFF
            ctx.fillStyle = 'white';
            ctx.font = '30px Iceland';
-           ctx.fillText('Score: ' + context.state.score, 10, 50);
-           ctx.fillText('Combo: ' + context.state.combo, 190, 50);
+           ctx.fillText('Score: ' + context.state.score, 30, 50);
+           ctx.fillText('Combo: ' + context.state.combo, 250, 50);
 
 // HEALTH INDICATOR
            ctx.fillStyle = 'white';
@@ -246,12 +246,18 @@
 
            } else {
            }
+           ctx.font = '30px Iceland';
+           ctx.fillStyle = 'white';
            img.src = 'assets/dots/crosshair.png';
            var frame = (context.state.gifFrame % 29);
            ctx.drawImage(img, (img.width / 30) * frame, 0, img.width / 30, img.height, 20, 552, 50, 50);
+           ctx.fillText('A', 37, 586);
            ctx.drawImage(img, (img.width / 30) * frame, 0, img.width / 30, img.height, 120, 552, 50, 50);
+           ctx.fillText('S', 137, 586);
            ctx.drawImage(img, (img.width / 30) * frame, 0, img.width / 30, img.height, 220, 552, 50, 50);
+           ctx.fillText('D', 237, 586);
            ctx.drawImage(img, (img.width / 30) * frame, 0, img.width / 30, img.height, 320, 552, 50, 50);
+           ctx.fillText('F', 337, 586);
             //  ctx.fillStyle = 'white';
             //  ctx.fillRect(0, 572.5, 400, 10);
 

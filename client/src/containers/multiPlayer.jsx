@@ -37,7 +37,8 @@ class Multiplayer extends React.Component {
       exclamationP1: null,
       exclamationChangeP1: false,
       exclamationP2: null,
-      exclamationChangeP2: false
+      exclamationChangeP2: false,
+      gifFrame: 0
     };
     this.updateCanvas = this.updateCanvas.bind(this);
 
@@ -114,11 +115,16 @@ class Multiplayer extends React.Component {
           color: color,
           keyBind: keyBind,
           draw: function() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
-            ctx.closePath();
-            ctx.fillStyle = this.color;
-            ctx.fill();
+            // ctx.beginPath();
+            // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+            // ctx.closePath();
+            // ctx.fillStyle = this.color;
+            // ctx.fill();
+            var img = new Image();
+            img.src = 'assets/dots/shiny.png';
+            var heightContext = 1 + Math.floor(context.state.gifFrame / 75);
+            var widthContext = context.state.gifFrame % 75;
+            ctx.drawImage(img, (img.width / 75) * widthContext, (heightContext - 1) * img.height / 2, img.width / 75, (img.height / 2), this.x, this.y, 50, 50);
           }
         };
         return ball;
@@ -152,13 +158,13 @@ class Multiplayer extends React.Component {
         var color = '#' + Math.random().toString(16).substr(-6);
         var displacement = 0;
         if (player === 2) {
-          displacement = 515;
+          displacement = 600;
         } else if (player === 1) {
-          displacement = 0;
+          displacement = 20;
         }
         for (let i = 0; i < rowArr.length; i ++) {
           if (rowArr[i].position === 1) {
-            row.balls.push(makeBall(i * 80 + 125 + displacement, 200, color, rowArr[i].keyCode));
+            row.balls.push(makeBall(i * 100 + displacement, 200, color, rowArr[i].keyCode));
           }
         }
         return row;
@@ -385,36 +391,60 @@ class Multiplayer extends React.Component {
 
 
   /*                Player 1 Hit condition            */
-          if (context.state.hitP1 === true) {
-            if (counterP1 === 5) {
-              context.setState({hitP1: false});
-              counterP1 = 0;
-            } else {
-              ctx.fillStyle = 'blue';
-              ctx.fillRect(50, 572.5, 400, 10);
-              counterP1++;
-              ctx.fillStyle = 'white';
-            }
-          } else {
-            ctx.fillStyle = 'white';
-            ctx.fillRect(50, 572.5, 400, 10);
-          }
+  //         if (context.state.hitP1 === true) {
+  //           if (counterP1 === 5) {
+  //             context.setState({hitP1: false});
+  //             counterP1 = 0;
+  //           } else {
+  //             ctx.fillStyle = 'blue';
+  //             ctx.fillRect(50, 572.5, 400, 10);
+  //             counterP1++;
+  //             ctx.fillStyle = 'white';
+  //           }
+  //         } else {
+  //           ctx.fillStyle = 'white';
+  //           ctx.fillRect(50, 572.5, 400, 10);
+  //         }
 
-  /*                Player 2 Hit condition            */
-          if (context.state.hitP2 === true) {
-            if (counterP2 === 5) {
-              context.setState({hitP2: false});
-              counterP2 = 0;
-            } else {
-              ctx.fillStyle = 'blue';
-              ctx.fillRect(550, 575, 400, 10);
-              counterP2++;
-              ctx.fillStyle = 'white';
-            }
-          } else {
-            ctx.fillStyle = 'white';
-            ctx.fillRect(550, 572.5, 400, 10);
-          }
+  // /*                Player 2 Hit condition            */
+  //         if (context.state.hitP2 === true) {
+  //           if (counterP2 === 5) {
+  //             context.setState({hitP2: false});
+  //             counterP2 = 0;
+  //           } else {
+  //             ctx.fillStyle = 'blue';
+  //             ctx.fillRect(550, 575, 400, 10);
+  //             counterP2++;
+  //             ctx.fillStyle = 'white';
+  //           }
+  //         } else {
+  //           ctx.fillStyle = 'white';
+  //           ctx.fillRect(550, 572.5, 400, 10);
+  //         }
+          ctx.font = '30px Iceland';
+          ctx.fillStyle = 'white';
+          var img = new Image();
+          img.src = 'assets/dots/crosshair.png';
+          var frame = (context.state.gifFrame % 29);
+          ctx.drawImage(img, (img.width / 30) * frame, 0, img.width / 30, img.height, 20, 552, 50, 50);
+          
+          ctx.fillText('A', 36, 585);
+          ctx.drawImage(img, (img.width / 30) * frame, 0, img.width / 30, img.height, 120, 552, 50, 50);
+          ctx.fillText('S', 136, 585);
+          ctx.drawImage(img, (img.width / 30) * frame, 0, img.width / 30, img.height, 220, 552, 50, 50);
+          ctx.fillText('D', 236, 585);
+          ctx.drawImage(img, (img.width / 30) * frame, 0, img.width / 30, img.height, 320, 552, 50, 50);
+          ctx.fillText('F', 336, 585);
+
+
+          ctx.drawImage(img, (img.width / 30) * frame, 0, img.width / 30, img.height, 600, 552, 50, 50);
+          ctx.fillText('J', 618, 585);
+          ctx.drawImage(img, (img.width / 30) * frame, 0, img.width / 30, img.height, 700, 552, 50, 50);
+          ctx.fillText('K', 718, 585);
+          ctx.drawImage(img, (img.width / 30) * frame, 0, img.width / 30, img.height, 800, 552, 50, 50);
+          ctx.fillText('L', 818, 585);
+          ctx.drawImage(img, (img.width / 30) * frame, 0, img.width / 30, img.height, 900, 552, 50, 50);
+          ctx.fillText(';', 920, 585);
 
   /*                Player 1 Dot Advance           */
           allRowsP1.rows.forEach(function(row) {
@@ -449,6 +479,11 @@ class Multiplayer extends React.Component {
 
       audio.play();
       var drawLoop = setInterval(()=> {
+        if (context.state.gifFrame < 150) {
+          context.setState({gifFrame: this.state.gifFrame + 1});
+        } else {
+          context.setState({gifFrame: 1});
+        }
         draw();
         if (context.state.healthP1 <= 0 && context.state.healthP2 <= 0) {
           audio.pause();
@@ -491,7 +526,7 @@ class Multiplayer extends React.Component {
           return (ball.keyBind);
         });
         output = [output.join('')];
-        output.push(Math.abs(575 - arrayRow.rows[0].balls[0].y));
+        output.push(Math.abs(550 - arrayRow.rows[0].balls[0].y));
         return output;
       };
 
