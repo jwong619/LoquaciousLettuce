@@ -6,19 +6,29 @@ import {selectUser} from '../actions/index';
 import {showModal} from '../actions/index';
 import {closeModal} from '../actions/index';
 import {Button, Modal} from 'react-bootstrap';
-import {getTopTenScores} from '../actions/index';
 
 class ScoreList extends React.Component {
 
+
+  componentDidMount () {
+    console.log('top games on mount', this.props.topTen);
+    //query for the top 10
+  }
+
   createScoreListEntries() {
-    console.log('top games', this.props.topTen);
-    return this.props.topTen.map((game, index) => {
+    console.log('top games --->', this.props.topTen);
+    var topTen = this.props.topTen;
+    if (topTen.length >= 10) {
+      topTen = topTen.slice(0,10);
+    }
+    return topTen.map((game, index) => {
       var user = game.profiles;
+      // var id = game.id || user.id;
       return (
 
         <div key={index} >
 
-          <li key={user.id.toString()} onClick={() => { this.props.selectUser(user); this.props.showModal({visibility: true, user: user, score:this.props.topTenScores[index]}); } }>
+          <li key={user.id.toString()} onClick={() => { this.props.selectUser(user); this.props.showModal({visibility: true, user: user, score: game.score}); } }>
 
               <div id="items" className="col-sm-6-offset-3">
               <div id="scoreList" className="col-sm-8">
@@ -45,10 +55,10 @@ class ScoreList extends React.Component {
           <div>
             <Modal id="modals" show={this.props.showScoreModal.visibility} onHide={ () => this.props.closeModal({visibility: false, user: {username:'julia'}}) }>
               <Modal.Header closeButton>
-                <Modal.Title> {this.props.showScoreModal.user.username} RANKING: ROCKSTAR </Modal.Title>
+                <Modal.Title> {this.props.showScoreModal.user.display} RANKING: ROCKSTAR </Modal.Title>
               </Modal.Header>
               <Modal.Body >
-                <div id="modPic" className="col-sm-4"><img src={this.props.showScoreModal.user.image} height="160" width="160"/></div>
+                <div id="modPic" className="col-sm-4"><img src={this.props.showScoreModal.user.imageurl} height="160" width="160"/></div>
                 <div id="lvl" className="col-sm-6">
                   <div> STATS </div>
                   Super Beginner: <br></br>
@@ -76,7 +86,6 @@ class ScoreList extends React.Component {
 
 var mapStateToProps = (state) => {
   return {
-    topTenScoresUsers: state.topTenScoresUsers,
     showScoreModal: state.showScoreModal,
     topTen: state.topTen
   };

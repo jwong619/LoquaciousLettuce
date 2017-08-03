@@ -8,6 +8,7 @@ import {Button} from 'react-bootstrap';
 
 class Score extends React.Component {
   render() {
+    console.log(this.props.topTen)
     return (
 
       <div className = 'scorePage'>
@@ -16,7 +17,7 @@ class Score extends React.Component {
         <Link to='/'><Button className="levelChoiceBtn" >PLAY AGAIN!</Button></Link>
         <Button id="logoutBtn" href="/logout" className="levelChoiceBtn" >Logout</Button>
         <br></br>
-          <ScoreList key={this.props.topTenScoresUsers.id}/>
+          <ScoreList />
       </div>
     );
   }
@@ -24,7 +25,7 @@ class Score extends React.Component {
 
 var mapStateToProps = (state) => {
   return {
-    topTenScoresUsers: state.topTenScoresUsers
+    topTen: state.topTen
   };
 };
 

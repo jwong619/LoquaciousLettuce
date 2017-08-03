@@ -5,6 +5,19 @@
     display: none;
 }
 
+
+#imageMssg {
+    visibility: hidden;
+    height:3px;
+    margin-left:10px;
+}
+
+#profile-pic:hover + #imageMssg {
+    visibility: visible;
+    text-align: center;
+}​
+
+
 h1 {
   font-size: 30px;
   color: #00cc66;

@@ -33,9 +33,7 @@
        gifFrame: 0
      };
      this.updateCanvas = this.updateCanvas.bind(this);
-
      this.increaseScore = this.increaseScore.bind(this);
-
      this.increaseAttempt = this.increaseAttempt.bind(this);
      this.decreaseAttempt = this.decreaseAttempt.bind(this);
 
@@ -43,6 +41,7 @@
 
    componentDidMount() {
      console.log('THIS IS THE GAME', this.props.game);
+
    }
 
    increaseScore() {
@@ -387,7 +386,7 @@
          allRows.rows.push(makeRow(Math.floor(Math.random() * 10)));
          if (context.state.health <= 0) {
            audio.pause();
-           saveGame(this.props.currentUser.id, context.state);
+           // saveGame(this.props.currentUser.id, context.state);
            context.setState({end: true});
            clearInterval(frameCheck);
            clearInterval(drawLoop);
@@ -505,7 +504,7 @@
        }
        function listenToJEY() {
          keyboardJS.bind('j + e + y', function(e) {
-           //context.setState({score: context.state.score + 999});
+           context.setState({score: context.state.score + 999});
          });
        }
        listenToJEY();

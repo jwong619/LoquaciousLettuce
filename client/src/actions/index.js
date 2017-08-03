@@ -198,18 +198,7 @@ export const selectMode = (playerMode) => {
 };
 
 
-
 //--------------------------------SCORELIST--------------------------------//
-
-// export const totalSingleScore = (score) => {
-//   console.log("score---", score);
-//   return {
-//     type: 'UPDATE_TOTAL_SCORE',
-//     payload: view
-//   };
-// };
-
-
 
 export const saveGame = (profileId, game) => (dispatch, getState) => {
   console.log('in the saveGame function');
@@ -242,26 +231,15 @@ export const saveGame = (profileId, game) => (dispatch, getState) => {
 
 //--------------------------------SCORELIST--------------------------------//
 
-export const changeTopTenScoresUsers = (users) => {
-  // console.log('tessstttttt');
-  return {
-    type: 'UPDATE_TOP_TEN_USERS',
-    payload: users
-  }
-}
-
-export const changeTopTenScores = (scores) => {
-  return {
-    type: 'UPDATE_TOP_TEN_USERS_SCORES',
-    payload: scores
-  }
-}
-
 export const changeTopTen = (games) => {
   return {
     type: 'UPDATE_TOP_TEN',
     payload: games
   }
+}
+
+export const getTopTen = () => {
+
 }
 
 
