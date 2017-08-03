@@ -6,13 +6,15 @@ import {selectUser} from '../actions/index';
 import {showModal} from '../actions/index';
 import {closeModal} from '../actions/index';
 import {Button, Modal} from 'react-bootstrap';
+import {getTopGames} from '../actions/index';
 
 class ScoreList extends React.Component {
 
 
-  componentDidMount () {
+  componentWillMount () {
     console.log('top games on mount', this.props.topTen);
     //query for the top 10
+    this.props.getTopGames(this.props.game);
   }
 
   createScoreListEntries() {
@@ -28,7 +30,7 @@ class ScoreList extends React.Component {
 
         <div key={index} >
 
-          <li key={user.id.toString()} onClick={() => { this.props.selectUser(user); this.props.showModal({visibility: true, user: user, score: game.score}); } }>
+          <li onClick={() => { this.props.selectUser(user); this.props.showModal({visibility: true, user: user, score: game.score}); } }>
 
               <div id="items" className="col-sm-6-offset-3">
               <div id="scoreList" className="col-sm-8">
@@ -87,12 +89,13 @@ class ScoreList extends React.Component {
 var mapStateToProps = (state) => {
   return {
     showScoreModal: state.showScoreModal,
-    topTen: state.topTen
+    topTen: state.topTen,
+    game: state.game
   };
 };
 
 var mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({selectUser: selectUser, showModal: showModal, closeModal: closeModal}, dispatch);
+  return bindActionCreators({selectUser: selectUser, showModal: showModal, closeModal: closeModal, getTopGames: getTopGames}, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScoreList);

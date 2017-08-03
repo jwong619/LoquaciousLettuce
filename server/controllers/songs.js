@@ -269,3 +269,23 @@ module.exports.testqb = (req, res) => {
     res.sendStatus(404);
   });
 };
+
+
+
+module.exports.getOneByNameUrl = (req, res) => {  // [ R ]
+  console.log('body------', req.body.url);
+  // res.send('test julia');
+  models.Song.where({ url: req.body.url }).fetch() // 'body' = SOME NODE THING WHICH WILL AUTO-BE THERE
+    .then(song => {
+      if (!song) {
+        throw song;
+      }
+      res.status(200).send(song);
+    })
+    .error(err => {
+      res.status(500).send(err);
+    })
+    .catch(() => {
+      res.sendStatus(404);
+    });
+};

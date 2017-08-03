@@ -8,6 +8,9 @@ router.route('/')
   .post(SongController.create)
   ;
 
+router.route('/nameUrl')
+  .post(SongController.getOneByNameUrl)
+  ;
 
 router.route('/relTest')
   .get(SongController.relTest)
