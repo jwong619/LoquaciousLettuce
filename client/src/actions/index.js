@@ -280,7 +280,6 @@ export const getTopGames = (game) => (dispatch,getState) => {
   .catch( (error) => {
     console.error('failed to get top scores');
   })
-
 }
 
 
