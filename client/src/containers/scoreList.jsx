@@ -47,7 +47,6 @@ class ScoreList extends React.Component {
     // console.log('stars', this.props.showScoreModal.stats.games[0].numGamesDifficulty);
     // console.log('scores', this.props.showScoreModal.stats.games[0].topScoreDifficulty);
     //{this.props.showScoreModal.stats.games[0].numGamesDifficulty[1]}
-
     return (
       <div>
         <ol>
