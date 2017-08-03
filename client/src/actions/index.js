@@ -237,7 +237,6 @@ export const changeTopTen = (games) => {
   }
 }
 
-
 export const getTopGames = (game) => (dispatch,getState) => {
   console.log('in the getTopGames function!!!!! julia');
   var level = 0;
@@ -264,7 +263,6 @@ export const getTopGames = (game) => (dispatch,getState) => {
   .catch( (error) => {
     console.error('failed to get top scores');
   })
-
 }
 
 

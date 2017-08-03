@@ -30,8 +30,6 @@ module.exports.getOne = (req, res) => {  // [ R ]
 };
 
 
-
-
 module.exports.create = (req, res) => {  // [ C ]
   models.Game.forge({
     profile_id: req.body.profileId,
@@ -136,7 +134,7 @@ module.exports.getAllForUser = (req, res) => {  // [ R ]
 module.exports.getPlayerStats = (req, res) => {
   // QUERY DB TO GET THE PROFILE ID FROM THE PROFILE EMAIL
   let profile_id = 0;
-  
+
   models.Profile.where({ email: req.params.email})
   .fetch()
   .then(profile => {
@@ -149,7 +147,7 @@ module.exports.getPlayerStats = (req, res) => {
       withRelated: ['profiles', 'songs'],
     })
     // CHAIN-INVOKE A SEPARATE PACKAGING FUNCTION WHICH:
-    .then(games => { 
+    .then(games => {
       var stats = {
         topScoreDifficulty: {
           1: 0,
