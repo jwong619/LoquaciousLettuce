@@ -19,25 +19,29 @@ class ScoreList extends React.Component {
     console.log('top games --->', this.props.topTen);
     var topTen = this.props.topTen;
     if (topTen.length >= 10) {
-      topTen = topTen.slice(0,10);
+      topTen = topTen.slice(0, 10);
     }
     return topTen.map((game, index) => {
       var user = game.profiles;
       return (
 
-        <div key={index} >
-
-          <li onClick={() => { this.props.selectUser(user); this.props.showModal({visibility: true, user: user, score: game.score}); } }>
-
-              <div id="items" className="col-sm-6-offset-3">
-              <div id="scoreList" className="col-sm-8">
-                <img id="userImage" src={user.imageurl} height="45" width="45"/>
-                  {user.display}
-                </div>
-                <div id="score">{game.score}<br></br></div>
+        <div key={index}>
+          <div onClick={() => { this.props.selectUser(user); this.props.showModal({visibility: true, user: user, score: game.score}); } }>
+            <div className="items">
+              <div className='scoreIndexContainer'>
+                <h4>{(index + 1) + '.'}</h4>
               </div>
-          </li>
-
+              <div className='scoreImageContainer'>
+                <img className="userImage" src={user.imageurl}/>
+              </div>
+              <div className='scoreDisplayContainer'>
+                <h7>{user.display}</h7>
+              </div>
+              <div className ='scoreScoreContainer'>
+                <h6>{game.score}</h6>
+              </div>    
+            </div>
+          </div>
         </div>
       );
     });
@@ -49,7 +53,7 @@ class ScoreList extends React.Component {
     //{this.props.showScoreModal.stats.games[0].numGamesDifficulty[1]}
     return (
       <div>
-        <ol>
+        <div>
           <div>
             <Modal id="modals" show={this.props.showScoreModal.visibility} onHide={ () => this.props.closeModal({visibility: false, user: {display:'julia'}, stats: {games: []}}) }>
               <Modal.Header closeButton>
@@ -78,7 +82,7 @@ class ScoreList extends React.Component {
             </Modal>
           </div>
             {this.createScoreListEntries()}
-        </ol>
+        </div>
       </div>
     );
   }
