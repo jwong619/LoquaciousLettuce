@@ -58,21 +58,22 @@ router.route('/profile')
           return a + c;
         }, 0);
 
-        rank = Math.floor(rank/diffs.length);
+        rankNum = Math.floor(rank/diffs.length);
+        var rank;
 
-        if (rank === 1) {
+        if (rankNum === 1) {
           rank = 'Super Beginner';
-        } else if (rank === 2) {
+        } else if (rankNum === 2) {
           rank = 'Beginner';
-        } else if (rank === 3) {
+        } else if (rankNum === 3) {
           rank = 'Intermediate';
-        } else if (rank === 4) {
+        } else if (rankNum === 4) {
           rank = 'Advanced';
-        } else if (rank === 5) {
+        } else if (rankNum === 5) {
           rank = 'Rock Star!';
         }
 
-        console.log('rank---->', rank);
+        var rankObj = {rankNum: rankNum, rank: rank};
 
         var stars = {};
         for (var i = 0; i < games.length; i++) {
@@ -82,7 +83,6 @@ router.route('/profile')
             stars[games[i].difficulty] = 1;
           }
         }
-        console.log('stars----', stars);
 
         var scoresMean = [];
         for (var j = 1; j < 6; j++) {
@@ -103,10 +103,9 @@ router.route('/profile')
             return score;
           }
         })
-        console.log('scores ---->', scoresMean);
 
-        var stats = {stars: stars, scoresMean: scoresMean, rank: rank}
-        console.log('stats----------', stats);
+        var stats = {stars: stars, scoresMean: scoresMean, rankObj: rankObj};
+        console.log('here is access to stats KEVIIIIINNNNNNNNNNNN----------------->', stats);
 
         res.render('profile.ejs', {
           user: req.user,
