@@ -53,11 +53,11 @@ class ScoreList extends React.Component {
           <div>
             <Modal id="modals" show={this.props.showScoreModal.visibility} onHide={ () => this.props.closeModal({visibility: false, user: {display:'julia'}, stats: {games: []}}) }>
               <Modal.Header closeButton>
-                <Modal.Title id="modalTitle"> <span id="modalTitleUserName">{this.props.showScoreModal.user.display} </span>RANK: ROCKSTAR </Modal.Title>
+                <Modal.Title id="modalTitle"> <span id="modalTitleUserName">{this.props.showScoreModal.user.display} </span>RANK: {this.props.showScoreModal.stats.games[0].playerRanking} </Modal.Title>
               </Modal.Header>
               <Modal.Body >
                 <div id="modPic" className="col-sm-4"><img src={this.props.showScoreModal.user.imageurl} height="160" width="160"/></div>
-                <div id="lvl" className="col-sm-6">
+                <div id="lvls" className="col-sm-6">
                   <div> STATS </div>
                   Super Beginner: {this.props.showScoreModal.stats.games[0].numGamesDifficulty[1]} <br></br>
                   Beginner: {this.props.showScoreModal.stats.games[0].numGamesDifficulty[2]}<br></br>

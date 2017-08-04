@@ -1,8 +1,9 @@
 const express = require('express');
 const middleware = require('../middleware');
+const models = require('../../db/models');
 //const models = require('../db/models');
 //const ProfileController = require('./controllers').Profiles;
-//const GameController = require('./controllers').Games;
+const GameController = require('../controllers').Games;
 
 const router = express.Router();
 
@@ -39,15 +40,41 @@ router.route('/profile')
   //.get(ProfileController.getOne)
 
   .get(middleware.auth.verify, (req, res) => {
-    res.render('profile.ejs', {
-      user: req.user // get the user out of session and pass to template
-      //stats
-      //games:
-      //
-      //
-      //
+    console.log('emaillllll', req.user.email)
+    // get access to user
+    // then get all games for that user
+    // sort/ count by difficulty
+    // get top score from that specific difficulty
+    // stats send back in giant obj
 
-    });
+
+
+
+
+  // need to write this last query -- julia !!!!!!!!!!
+
+
+
+
+  ////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // res.render('profile.ejs', {
+    //   user: req.user // get the user out of session and pass to template
+    //   //stats
+    //   //games:
+    // });
   });
 
 router.route('/logout')
