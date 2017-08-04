@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactStars from 'react-stars';
 import $ from 'jquery';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -54,7 +55,7 @@ class ScoreList extends React.Component {
       <div>
         <ol>
           <div>
-            <Modal id="modals" show={this.props.showScoreModal.visibility} onHide={ () => this.props.closeModal({visibility: false, user: {display:'julia'}}) }>
+            <Modal id="modals" show={this.props.showScoreModal.visibility} onHide={ () => this.props.closeModal({visibility: false, user: {display:'julia'}, stats: {games: []}}) }>
               <Modal.Header closeButton>
                 <Modal.Title id="modalTitle"> <span id="modalTitleUserName">{this.props.showScoreModal.user.display} </span>RANK: ROCKSTAR </Modal.Title>
               </Modal.Header>
@@ -62,14 +63,20 @@ class ScoreList extends React.Component {
                 <div id="modPic" className="col-sm-4"><img src={this.props.showScoreModal.user.imageurl} height="160" width="160"/></div>
                 <div id="lvl" className="col-sm-6">
                   <div> STATS </div>
-                  Super Beginner: <br></br>
-                  Beginner: <br></br>
-                  Intermediate: <br></br>
-                  Advanced: <br></br>
-                  Rockstar: <br></br>
+                  Super Beginner: {this.props.showScoreModal.stats.games[0].numGamesDifficulty[1]} <br></br>
+                  Beginner: {this.props.showScoreModal.stats.games[0].numGamesDifficulty[2]}<br></br>
+                  Intermediate: {this.props.showScoreModal.stats.games[0].numGamesDifficulty[3]}<br></br>
+                  Advanced: {this.props.showScoreModal.stats.games[0].numGamesDifficulty[4]}<br></br>
+                  Rockstar: {this.props.showScoreModal.stats.games[0].numGamesDifficulty[5]}<br></br>
                 </div>
 
-                <span id="scr" className="col-sm-2"> highscores: {this.props.showScoreModal.score}</span>
+                <span id="scr" className="col-sm-2"> highscores: <br></br>
+                  {this.props.showScoreModal.stats.games[0].topScoreDifficulty[1]} <br></br>
+                  {this.props.showScoreModal.stats.games[0].topScoreDifficulty[2]} <br></br>
+                  {this.props.showScoreModal.stats.games[0].topScoreDifficulty[3]} <br></br>
+                  {this.props.showScoreModal.stats.games[0].topScoreDifficulty[4]} <br></br>
+                  {this.props.showScoreModal.stats.games[0].topScoreDifficulty[5]} <br></br>
+                </span>
 
               </Modal.Body>
             </Modal>

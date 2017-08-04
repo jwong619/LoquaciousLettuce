@@ -36,7 +36,7 @@ module.exports.create = (req, res) => {  // [ C ]
     profile_id: req.body.profileId,
     song_id: 1,
     score: req.body.score,
-    difficulty: req.body.difficulty,
+    difficulty: req.body.difficulty
 
   })
     .save()
