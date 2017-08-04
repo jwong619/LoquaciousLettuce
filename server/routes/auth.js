@@ -119,7 +119,6 @@ router.route('/profile')
       .catch(() => {
         res.sendStatus(404);
       });
-
   });
 
 router.route('/logout')
