@@ -31,7 +31,6 @@ module.exports.getOne = (req, res) => {  // [ R ]
 
 
 module.exports.create = (req, res) => {  // [ C ]
-  console.log('bodyyyy---', req.body);
   models.Game.forge({
     profile_id: req.body.profileId,
     song_id: 1,
@@ -41,7 +40,7 @@ module.exports.create = (req, res) => {  // [ C ]
   })
     .save()
     .then(result => {
-      res.send(201, result);
+      res.send(200, result);
     })
     .catch(err => {
       res.status(500).send(err);

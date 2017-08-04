@@ -23,7 +23,6 @@ class ScoreList extends React.Component {
     }
     return topTen.map((game, index) => {
       var user = game.profiles;
-      // var id = game.id || user.id;
       return (
 
         <div key={index} >
