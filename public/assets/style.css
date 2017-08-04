@@ -680,13 +680,14 @@ body {
 }
 
 #profileStats {
+  font-family: Iceland;
   height: 412px;
 }
 
 .levels {
   /*background-color: lightgrey;*/
   border-radius: 4px;
-  height: 40px;
+  height: 60px;
   margin-top: 5px;
   padding-top: 10px;
   padding-left: 15px;
@@ -697,10 +698,12 @@ body {
 }
 
 #profileLevelScores {
+  font-size: 20px;
   text-align: left;
 }
 
 #profileTopScores {
+  font-size: 30px;
   text-align: right;
 }
 
@@ -799,25 +802,29 @@ body {
 }
 
 #profTopScore {
-  margin-left: 570px;
+  font-size: 30px;
+  margin-left: 480px;
   font-weight: 800;
   text-transform: uppercase;
 }
 
 #profLevelScore {
+  font-size: 30px;
   font-weight: 800;
   text-transform: uppercase;
 }
 
 #profileRank {
-  font-size: 20px;
+  font-size: 30px;
+  font-weight: 900;
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 5px;
 }
 
 #profileRankMarkers {
-  font-size: 20px;
+  font-weight: 900;
+  font-size: 30px;
   color: blue;
 }
 
