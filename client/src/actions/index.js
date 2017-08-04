@@ -78,7 +78,10 @@ export const showModal = (obj) => (dispatch, getState) => {
 
 
 export const closeModal = (obj) => {
-  console.log("CLOSED --");
+  console.log("CLOSED -->>>>>>>>>>>", obj);
+  // query again can i do by name or id
+  obj['stats'] = { games: [{
+    averageScore: 1, numGamesDifficulty: {}, topScoreDifficulty: {} }, {}] };
   return {
     type: 'CLOSE_MODAL',
     payload: obj
